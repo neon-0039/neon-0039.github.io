@@ -529,48 +529,6 @@
     }
 
     /* =====================
-       SECRET BONUS TEXT
-    ===================== */
-
-    .secret-bonus-text {
-      display: none;
-
-      margin-left: 20px;
-
-      padding-left: 20px;
-
-      border-left: 1px solid #555;
-
-      opacity: 0;
-
-      transition: opacity .6s ease;
-    }
-
-    .secret-bonus-text.show {
-      display: inline;
-
-      opacity: 1;
-    }
-
-    .secret-bonus-link {
-      color: #ffd700;
-
-      text-decoration: none;
-
-      font-weight: 600;
-
-      letter-spacing: .08em;
-
-      transition: .2s ease;
-    }
-
-    .secret-bonus-link:hover {
-      color: #fff;
-
-      text-decoration: underline;
-    }
-
-    /* =====================
        RESPONSIVE
     ===================== */
 
@@ -1580,7 +1538,7 @@
     .secret-bonus {
       position: fixed;
 
-      bottom: 0;
+      bottom: -500px;
       left: 0;
       width: 100%;
 
@@ -1589,15 +1547,13 @@
 
       padding: 60px 20px;
 
-      display: none;
-
       z-index: 999;
 
-      animation: secretBonusAppear .8s cubic-bezier(.34, 1.56, .64, 1);
+      transition: bottom .8s cubic-bezier(.34, 1.56, .64, 1);
     }
 
     .secret-bonus.show {
-      display: block;
+      bottom: 0;
     }
 
     .secret-bonus-content {
@@ -1671,20 +1627,6 @@
       color: #000;
 
       transform: translateY(-3px);
-    }
-
-    @keyframes secretBonusAppear {
-
-      0% {
-        opacity: 0;
-        transform: translateY(50px);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
     }
 
     @media (max-width: 800px) {
@@ -2548,27 +2490,15 @@
 
       <div class="copyright">
         © 2026 neon_0039(akibako_Iovo)
-
-        <span
-          id="secretBonusText"
-          class="secret-bonus-text"
-        >
-          <a
-            href="secret-bonus.zip"
-            download
-            class="secret-bonus-link"
-          >
-            Secret File
-          </a>
-        </span>
       </div>
 
     </div>
 
   </footer>
+  </footer>
 
   <!-- =====================
-       SECRET BONUS
+       SECRET BONUS (Fixed Bottom)
   ====================== -->
 
   <div
@@ -3485,8 +3415,8 @@
       let roundTripCount = 0;
       let secretBonusShown = false;
 
-      const secretBonusText =
-        document.getElementById("secretBonusText");
+      const secretBonus =
+        document.getElementById("secretBonus");
 
       const documentHeight =
         document.documentElement.scrollHeight -
@@ -3572,7 +3502,7 @@
 
             secretBonusShown = true;
 
-            secretBonusText.classList.add(
+            secretBonus.classList.add(
               "show"
             );
 
