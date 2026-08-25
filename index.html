@@ -2123,7 +2123,7 @@
 
           <div>
             <div class="section-label">
-              07 / RANDOM TALK
+              08 / RANDOM TALK
             </div>
 
             <h2 class="section-title">
@@ -2176,7 +2176,7 @@
 
           <div>
             <div class="section-label">
-              08 / LINKS
+              09 / LINKS
             </div>
 
             <h2 class="section-title">
@@ -3334,10 +3334,10 @@
               "4/4 — タタ・タン・タタ・タン",
             cuts: [
               0.5,
-              1.5,
+              1,
               2,
               2.5,
-              3.5,
+              3,
               4
             ]
           },
@@ -3349,10 +3349,10 @@
               "5/4 — タタ・タン・タ・タン・タン・タ",
             cuts: [
               0.5,
-              1.5,
+              1,
               2,
-              3,
-              4,
+              2.5,
+              3.5,
               4.5,
               5
             ]
@@ -3366,7 +3366,7 @@
             waveform: "triangle",
             name: "STAGE 1",
             pattern:
-              "5/4 — タン・タン・タ・タ・タ・タン・タ",
+              "5/4 — タン・タン・タタ・タ・タン・タ",
             cuts: [
               1,
               2,
@@ -3382,15 +3382,17 @@
             waveform: "triangle",
             name: "STAGE 2",
             pattern:
-              "7/4+3/4 — タン・タ・タ・タン・タ・タン・タ",
+              "7/8+1.5/1 — タタ・ツツ・タ・タン・タ・タン・タ",
             cuts: [
+              0.5,
               1,
+              1.25,
               1.5,
               2,
               3,
               3.5,
-              4,
-              4.5
+              4.5,
+              5
             ]
           },
 
@@ -3402,11 +3404,12 @@
             cuts: [
               1,
               1.25,
-              2,
-              3,
+              2.25,
+              2.75,
+              3.75,
               4,
               4.25,
-              4.5,
+              4.75,
               5
             ]
           }
@@ -3678,7 +3681,6 @@
 
         splitterCtx.stroke();
 
-
         /* =====================
            SPLIT GUIDES
         ===================== */
@@ -3714,11 +3716,11 @@
 
 
               /* =====================
-                 GOOD AREA
+                 GOOD AREA (±100ms)
               ===================== */
 
               const goodMs =
-                170;
+                100;
 
 
               const goodLeft =
@@ -3736,7 +3738,7 @@
 
 
               splitterCtx.fillStyle =
-                "rgba(255,255,255,0.045)";
+                "rgba(135,206,250,0.20)";
 
 
               splitterCtx.fillRect(
@@ -3748,11 +3750,45 @@
 
 
               /* =====================
-                 PERFECT AREA
+                 EXCELLENT AREA (±50ms)
+              ===================== */
+
+              const excellentMs =
+                50;
+
+
+              const excellentLeft =
+                timeToX(
+                  targetTime -
+                  excellentMs
+                );
+
+
+              const excellentRight =
+                timeToX(
+                  targetTime +
+                  excellentMs
+                );
+
+
+              splitterCtx.fillStyle =
+                "rgba(0,200,100,0.30)";
+
+
+              splitterCtx.fillRect(
+                excellentLeft,
+                0,
+                excellentRight - excellentLeft,
+                height
+              );
+
+
+              /* =====================
+                 PERFECT AREA (±20ms)
               ===================== */
 
               const perfectMs =
-                90;
+                20;
 
 
               const perfectLeft =
@@ -3770,7 +3806,7 @@
 
 
               splitterCtx.fillStyle =
-                "rgba(255,255,255,0.10)";
+                "rgba(255,255,0,0.40)";
 
 
               splitterCtx.fillRect(
@@ -4451,17 +4487,20 @@
 
         cutsMade++;
 
-
         /* =====================
            SCORE
         ===================== */
 
         const perfectRange =
-          90;
+          20;
+
+
+        const excellentRange =
+          50;
 
 
         const goodRange =
-          170;
+          100;
 
 
         let points = 0;
@@ -4475,7 +4514,7 @@
           perfectRange
         ) {
 
-          points = 100;
+          points = 150;
 
           judgement =
             "PERFECT";
@@ -4487,10 +4526,25 @@
 
         } else if (
           difference <=
+          excellentRange
+        ) {
+
+          points = 100;
+
+          judgement =
+            "EXCELLENT";
+
+          combo++;
+
+          correctCuts++;
+
+
+        } else if (
+          difference <=
           goodRange
         ) {
 
-          points = 70;
+          points = 50;
 
           judgement =
             "GOOD";
