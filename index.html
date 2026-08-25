@@ -585,6 +585,60 @@
         align-items: flex-start;
       }
     }
+
+    /* =====================
+       RANDOM TALK
+    ===================== */
+
+    .talk {
+      background: var(--white);
+    }
+
+    .talk-list {
+      border-top: 1px solid var(--black);
+    }
+
+    .talk-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 35px;
+      padding: 35px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .talk-date {
+      color: #888;
+      font-size: 12px;
+    }
+
+    .talk-content h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .talk-content p {
+      max-width: 650px;
+      color: #666;
+      font-size: 13px;
+    }
+
+    @media (max-width: 800px) {
+
+      .talk-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+    }
+
+    .character-image {
+      width: 80%;
+      height: 80%;
+      object-fit: contain;
+      margin: auto;
+      opacity: 0.85;
+    }
+
   </style>
 </head>
 
@@ -609,6 +663,7 @@
           <li><a href="#download">DOWNLOAD</a></li>
           <li><a href="#news">NEWS</a></li>
           <li><a href="#guide">GUIDE</a></li>
+          <li><a href="#talk">RANDOM TALK</a></li>
         </ul>
       </nav>
 
@@ -657,19 +712,11 @@
 
       <div class="hero-visual">
 
-        <!--
-          キャラクター画像に変更する場合：
-
           <img
-            src="images/character.png"
-            alt="VOICEBANK NAME"
+            src="images/スクリーンショット 2026-08-25 145059.png"
+            alt="verα1.2における「あ」の波形"
             class="character-image"
           >
-        -->
-
-        <div class="character-placeholder">
-          CHARACTER IMAGE
-        </div>
 
       </div>
 
@@ -1018,6 +1065,59 @@
 
 
     <!-- =====================
+         RANDOM TALK
+    ====================== -->
+
+    <section id="talk" class="talk">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div>
+            <div class="section-label">
+              06 / RANDOM TALK
+            </div>
+
+            <h2 class="section-title">
+              どうでもいい話
+            </h2>
+          </div>
+
+          <p class="section-description">
+            音源制作とはあまり関係のない話。
+          </p>
+
+        </div>
+
+
+        <div class="talk-list">
+
+          <article class="talk-item">
+
+            <time class="talk-date">
+              2026.08.25
+            </time>
+
+            <div class="talk-content">
+              <h3>
+                サイトのコード書くの面倒すぎた
+              </h3>
+
+              <p>
+                HTMLとCSSの知識が少なすぎて、完成させられる気がしなかったのですべてChatGPTに任せてます。AIは偉大。
+              </p>
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =====================
          LINKS
     ====================== -->
 
@@ -1038,7 +1138,7 @@
           </div>
 
           <p class="section-description">
-            関連リンク。
+            関連リンク
           </p>
 
         </div>
@@ -1047,7 +1147,7 @@
         <div class="links-grid">
 
           <a
-            href="https://example.booth.pm/"
+            href="https://shigure0124.booth.pm/"
             target="_blank"
             rel="noopener noreferrer"
             class="link-card"
@@ -1063,7 +1163,7 @@
 
 
           <a
-            href="#"
+            href="https://x.com/akibako_Iovo"
             class="link-card"
           >
             <div class="link-name">
@@ -1077,11 +1177,11 @@
 
 
           <a
-            href="#"
+            href="https://voskey.icalo.net/@neon_0039"
             class="link-card"
           >
             <div class="link-name">
-              YouTube
+              Yuudachi Hertz bot
             </div>
 
             <div class="link-arrow">
