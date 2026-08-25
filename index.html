@@ -985,6 +985,465 @@
       }
 
     }
+    /* =====================
+       WAVE SPLITTER
+    ===================== */
+
+    .wave-splitter {
+      background: var(--white);
+      padding-top: 30px;
+    }
+
+
+    .wave-splitter details {
+      border-top: 1px solid var(--black);
+      border-bottom: 1px solid var(--black);
+    }
+
+
+    /* ---------------------
+       SUMMARY
+    --------------------- */
+
+    .wave-splitter summary {
+      cursor: pointer;
+      list-style: none;
+
+      padding: 25px 0;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 20px;
+
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+
+    .wave-splitter summary::-webkit-details-marker {
+      display: none;
+    }
+
+
+    .wave-splitter summary span {
+      color: #888;
+
+      font-size: 10px;
+      font-weight: 400;
+
+      letter-spacing: .18em;
+    }
+
+
+    .wave-splitter summary::after {
+      content: "+";
+
+      font-size: 25px;
+      font-weight: 300;
+    }
+
+
+    .wave-splitter details[open] summary::after {
+      content: "−";
+    }
+
+
+    /* ---------------------
+       INNER
+    --------------------- */
+
+    .splitter-inner {
+      padding: 10px 0 45px;
+    }
+
+
+    .splitter-description {
+      color: #666;
+
+      font-size: 13px;
+
+      margin-bottom: 25px;
+    }
+
+
+    /* ---------------------
+       DIFFICULTY
+    --------------------- */
+
+    .splitter-difficulty {
+      display: flex;
+
+      gap: 8px;
+
+      margin-bottom: 20px;
+    }
+
+
+    .difficulty-button {
+      padding: 9px 18px;
+
+      border: 1px solid #ccc;
+
+      background: var(--white);
+      color: #777;
+
+      cursor: pointer;
+
+      font: inherit;
+
+      font-size: 10px;
+      font-weight: 700;
+
+      letter-spacing: .12em;
+
+      transition: .2s;
+    }
+
+
+    .difficulty-button:hover {
+      border-color: var(--black);
+      color: var(--black);
+    }
+
+
+    .difficulty-button.active {
+      border-color: var(--black);
+
+      background: var(--black);
+      color: var(--white);
+    }
+
+
+    /* ---------------------
+       GAME
+    --------------------- */
+
+    .splitter-game {
+      border: 1px solid #222;
+
+      background: #080808;
+
+      padding: 20px;
+    }
+
+
+    /* ---------------------
+       HEADER
+    --------------------- */
+
+    .splitter-header {
+      display: flex;
+
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 20px;
+
+      margin-bottom: 15px;
+
+      color: #999;
+
+      font-size: 10px;
+
+      letter-spacing: .12em;
+    }
+
+
+    #splitterLevel {
+      color: #fff;
+
+      font-weight: 800;
+    }
+
+
+    /* ---------------------
+       WAVE
+    --------------------- */
+
+    .splitter-wave {
+      width: 100%;
+
+      border-top: 1px solid #222;
+      border-bottom: 1px solid #222;
+
+      background: #080808;
+    }
+
+
+    #splitterCanvas {
+      display: block;
+
+      width: 100%;
+      height: 280px;
+
+      touch-action: none;
+
+      cursor: crosshair;
+    }
+
+
+    /* ---------------------
+       STATUS
+    --------------------- */
+
+    .splitter-status {
+      display: flex;
+
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 20px;
+
+      margin-top: 18px;
+
+      color: #777;
+
+      font-size: 12px;
+    }
+
+
+    #splitterScore {
+      color: #fff;
+
+      font-size: 24px;
+
+      font-weight: 800;
+
+      letter-spacing: .08em;
+    }
+
+
+    /* ---------------------
+       RESULT
+    --------------------- */
+
+    .splitter-result {
+      min-height: 80px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+      align-items: center;
+
+      text-align: center;
+
+      padding: 20px 0;
+    }
+
+
+    .splitter-result-main {
+      color: #fff;
+
+      font-size: 26px;
+
+      font-weight: 900;
+
+      letter-spacing: .12em;
+    }
+
+
+    .splitter-combo {
+      margin-top: 8px;
+
+      color: #666;
+
+      font-size: 10px;
+
+      letter-spacing: .15em;
+    }
+
+
+    /* ---------------------
+       BUTTONS
+    --------------------- */
+
+    .splitter-buttons {
+      display: flex;
+
+      gap: 10px;
+
+      margin-top: 10px;
+    }
+
+
+    .splitter-buttons button {
+      padding: 12px 25px;
+
+      border: 1px solid var(--white);
+
+      background: var(--white);
+      color: var(--black);
+
+      cursor: pointer;
+
+      font: inherit;
+
+      font-size: 11px;
+      font-weight: 700;
+
+      letter-spacing: .12em;
+
+      transition: .2s;
+    }
+
+
+    .splitter-buttons button:hover {
+      background: #080808;
+
+      color: var(--white);
+    }
+
+
+    #splitterReset {
+      border-color: #555;
+
+      background: transparent;
+
+      color: #aaa;
+    }
+
+
+    #splitterReset:hover {
+      border-color: var(--white);
+
+      color: var(--white);
+    }
+
+
+    /* ---------------------
+       MOBILE
+    --------------------- */
+
+    @media (max-width: 800px) {
+
+      .splitter-difficulty {
+        width: 100%;
+      }
+
+
+      .difficulty-button {
+        flex: 1;
+
+        padding: 10px 8px;
+      }
+
+
+      .splitter-game {
+        padding: 15px;
+      }
+
+
+      .splitter-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 8px;
+      }
+
+
+      #splitterCanvas {
+        height: 220px;
+      }
+
+
+      .splitter-status {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 8px;
+      }
+
+
+      #splitterScore {
+        font-size: 22px;
+      }
+
+
+      .splitter-result-main {
+        font-size: 22px;
+      }
+
+    }
+    #splitterCut {
+      padding: 12px 30px;
+
+      border: 1px solid var(--white);
+
+      background: var(--white);
+      color: var(--black);
+
+      cursor: pointer;
+
+      font: inherit;
+
+      font-size: 12px;
+      font-weight: 800;
+
+      letter-spacing: .15em;
+
+      transition: .2s;
+    }
+
+
+    #splitterCut:hover {
+      background: #080808;
+      color: var(--white);
+    }
+    /* ---------------------
+       SPLIT GUIDE
+    --------------------- */
+
+    .splitter-wave {
+      position: relative;
+    }
+
+
+    #splitterCanvas {
+      position: relative;
+      z-index: 1;
+    }
+
+
+    /* ---------------------
+       CUT BUTTON
+    --------------------- */
+
+    #splitterCut {
+      padding: 12px 30px;
+
+      border: 1px solid var(--white);
+
+      background: var(--white);
+      color: var(--black);
+
+      cursor: pointer;
+
+      font: inherit;
+
+      font-size: 12px;
+      font-weight: 800;
+
+      letter-spacing: .15em;
+
+      transition: .15s;
+    }
+
+
+    #splitterCut:hover {
+      background: #080808;
+      color: var(--white);
+    }
+
+
+    #splitterCut:active {
+      transform: scale(.96);
+    }
   </style>
 </head>
 
@@ -1132,7 +1591,7 @@
             </p>
 
             <p>
-            現在、verα1.2を製作中になっています。公開時期は未定です。　
+            現在、verα1.2を制作中になっています。公開時期は未定です。　
             </p>
 
           </div>
@@ -1185,7 +1644,7 @@
 
           <div class="info-item">
             <span class="info-label">RELEASE</span>
-            <div class="info-value">2025.12.25(製作開始)</div>
+            <div class="info-value">2025.12.25(制作開始)</div>
           </div>
 
           <div class="info-item">
@@ -1511,6 +1970,146 @@
 
     </section>
 
+   <!-- =====================
+         WAVE SPLITTER GAME
+    ====================== -->
+
+    <section class="wave-splitter">
+
+      <div class="container">
+
+        <details>
+
+          <summary>
+            <span>07 / MINI GAME</span>
+            WAVE SPLITTER
+          </summary>
+
+          <div class="splitter-inner">
+
+            <p class="splitter-description">
+              波形の境界を見極めて、正しい位置で分割してください。
+            </p>
+
+
+            <!-- DIFFICULTY -->
+
+            <div class="splitter-difficulty">
+
+              <button
+                class="difficulty-button active"
+                data-level="easy"
+              >
+                EASY
+              </button>
+
+              <button
+                class="difficulty-button"
+                data-level="normal"
+              >
+                NORMAL
+              </button>
+
+              <button
+                class="difficulty-button"
+                data-level="hard"
+              >
+                HARD
+              </button>
+
+              <button
+                class="difficulty-button"
+                data-level="s-hard"
+              >
+                S-HARD
+              </button>
+
+            </div>
+
+
+            <!-- GAME AREA -->
+
+            <div class="splitter-game">
+
+              <div class="splitter-header">
+
+                <span id="splitterLevel">
+                  EASY
+                </span>
+
+                <span id="splitterPattern">
+                  4/4 — タン・タン・タン・タン
+                </span>
+
+              </div>
+
+
+              <div class="splitter-wave">
+
+                <canvas
+                  id="splitterCanvas"
+                ></canvas>
+
+              </div>
+
+
+              <div class="splitter-status">
+
+                <span id="splitterStatus">
+                  STARTを押してください。
+                </span>
+
+                <span id="splitterScore">
+                  SCORE --
+                </span>
+
+              </div>
+
+
+              <div class="splitter-result">
+
+                <div
+                  id="splitterResult"
+                  class="splitter-result-main"
+                >
+                  READY
+                </div>
+
+                <div
+                  id="splitterCombo"
+                  class="splitter-combo"
+                >
+                  COMBO ×0
+                </div>
+
+              </div>
+
+
+              <div class="splitter-buttons">
+
+                <button
+                  id="splitterStart"
+                >
+                  START
+                </button>
+
+                <button
+                  id="splitterReset"
+                >
+                  RESET
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </details>
+
+      </div>
+
+    </section>
 
     <!-- =====================
          RANDOM TALK
@@ -2533,8 +3132,1767 @@
       checkPageTop();
 
     </script>
+    <script>
 
+      /* =====================
+         WAVE SPLITTER
+         BPM 120
+      ===================== */
+
+      const splitterCanvas =
+        document.getElementById("splitterCanvas");
+
+      const splitterCtx =
+        splitterCanvas.getContext("2d");
+
+
+      const splitterStart =
+        document.getElementById("splitterStart");
+
+
+      const splitterReset =
+        document.getElementById("splitterReset");
+
+
+      const splitterStatus =
+        document.getElementById("splitterStatus");
+
+
+      const splitterScore =
+        document.getElementById("splitterScore");
+
+
+      const splitterResult =
+        document.getElementById("splitterResult");
+
+
+      const splitterCombo =
+        document.getElementById("splitterCombo");
+
+
+      const splitterLevel =
+        document.getElementById("splitterLevel");
+
+
+      const splitterPattern =
+        document.getElementById("splitterPattern");
+
+
+      const difficultyButtons =
+        document.querySelectorAll(
+          ".difficulty-button"
+        );
+
+
+      /* =====================
+         AUDIO
+      ===================== */
+
+      const beatSound =
+        new Audio("beat.wav");
+
+
+      const cutSound =
+        new Audio("cut.wav");
+
+
+      beatSound.preload = "auto";
+      cutSound.preload = "auto";
+
+
+      /* =====================
+         SETTINGS
+      ===================== */
+
+      const BPM = 120;
+
+      const BEAT_TIME =
+        60000 / BPM;
+
+      const EIGHTH_TIME =
+        BEAT_TIME / 2;
+
+
+      /* =====================
+         DISPLAY SCALE
+         ガイド間隔・棒速度
+      ===================== */
+
+      const SPACING_SCALE =
+        1.25;
+
+      /* 波形全体の長さ */
+
+      const LEAD_IN = 1000;
+
+      const LEAD_OUT = 1000;
+
+
+      /* =====================
+         GAME STATE
+      ===================== */
+
+      let selectedLevel = "easy";
+
+      let currentStage = 0;
+
+      let gameRunning = false;
+
+      let currentPattern = [];
+
+      let currentCutIndex = 0;
+
+      let targetTimes = [];
+
+      let startTime = 0;
+
+      let animationFrame = null;
+
+      let totalScore = 0;
+
+      let combo = 0;
+
+      let maxCombo = 0;
+
+      let stageScore = 0;
+
+      let cutsMade = 0;
+
+      let correctCuts = 0;
+
+
+      /* =====================
+         STAGE DATA
+      ===================== */
+
+      const stages = {
+
+        easy: [
+
+          {
+            waveform: "sine",
+            name: "STAGE 1",
+            pattern: "中央で1回CUT",
+            cuts: [0.5]
+          },
+
+          {
+            waveform: "sine",
+            name: "STAGE 2",
+            pattern:
+              "4/4 — タン・タン・タン・タン",
+            cuts: [
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+
+        ],
+
+
+        normal: [
+
+          {
+            waveform: "saw",
+            name: "STAGE 1",
+            pattern:
+              "4/4 — タン・タン・タン・タン",
+            cuts: [
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+
+          {
+            waveform: "saw",
+            name: "STAGE 2",
+            pattern:
+              "4/4 — タタタタ・タン・タン",
+            cuts: [
+              0.5,
+              1,
+              1.5,
+              2,
+              3,
+              4
+            ]
+          }
+
+        ],
+
+
+        hard: [
+
+          {
+            waveform: "cosine",
+            name: "STAGE 1",
+            pattern:
+              "4/4 — タタ・タン・タタ・タン",
+            cuts: [
+              0.5,
+              1.5,
+              2,
+              2.5,
+              3.5,
+              4
+            ]
+          },
+
+          {
+            waveform: "cosine",
+            name: "STAGE 2",
+            pattern:
+              "5/4 — タタ・タン・タ・タン・タン・タ",
+            cuts: [
+              0.5,
+              1.5,
+              2,
+              3,
+              4,
+              4.5,
+              5
+            ]
+          }
+
+        ],
+
+        "s-hard": [
+
+          {
+            waveform: "triangle",
+            name: "STAGE 1",
+            pattern:
+              "5/4 — タン・タン・タ・タ・タ・タン・タ",
+            cuts: [
+              1,
+              2,
+              2.5,
+              3,
+              3.5,
+              4,
+              4.5
+            ]
+          },
+
+          {
+            waveform: "triangle",
+            name: "STAGE 2",
+            pattern:
+              "7/4+3/4 — タン・タ・タ・タン・タ・タン・タ",
+            cuts: [
+              1,
+              1.5,
+              2,
+              3,
+              3.5,
+              4,
+              4.5
+            ]
+          },
+
+          {
+            waveform: "triangle",
+            name: "STAGE 3",
+            pattern:
+              "6.25/4+1/4 — タン・ツ・タン・タ・タン・ツ・ツ・タ",
+            cuts: [
+              1,
+              1.25,
+              2,
+              3,
+              4,
+              4.25,
+              4.5,
+              5
+            ]
+          }
+
+        ]
+
+      };
+
+
+      /* =====================
+         CANVAS
+      ===================== */
+
+      function resizeCanvas() {
+
+        const rect =
+          splitterCanvas.getBoundingClientRect();
+
+
+        splitterCanvas.width =
+          rect.width * window.devicePixelRatio;
+
+
+        splitterCanvas.height =
+          rect.height * window.devicePixelRatio;
+
+
+        splitterCtx.setTransform(
+          window.devicePixelRatio,
+          0,
+          0,
+          window.devicePixelRatio,
+          0,
+          0
+        );
+
+
+        drawWave();
+
+      }
+
+
+      window.addEventListener(
+        "resize",
+        resizeCanvas
+      );
+
+
+      /* =====================
+         WAVEFORM
+      ===================== */
+
+      function getWaveY(
+        x,
+        type,
+        width,
+        height
+      ) {
+
+        const center =
+          height / 2;
+
+
+        const amplitude =
+          height * 0.28;
+
+
+        const cycles =
+          5;
+
+
+        const normalizedX =
+          x / width;
+
+        const phase =
+          normalizedX *
+          Math.PI *
+          2 *
+          cycles;
+
+
+        if (type === "sine") {
+
+          return (
+            center -
+            Math.sin(phase) *
+            amplitude
+          );
+
+        }
+
+
+        if (type === "cosine") {
+
+          return (
+            center -
+            Math.cos(phase) *
+            amplitude
+          );
+
+        }
+
+
+        if (type === "saw") {
+
+          const normalized =
+            (phase /
+              (Math.PI * 2)) %
+            1;
+
+
+          return (
+            center -
+            (
+              normalized * 2 - 1
+            ) *
+            amplitude
+          );
+
+        }
+
+        if (type === "triangle") {
+
+          const normalized =
+            (phase /
+              (Math.PI * 2)) %
+            1;
+
+          const value =
+            normalized < 0.5
+              ? normalized * 4 - 1
+              : 3 - normalized * 4;
+
+          return (
+            center -
+            value * amplitude
+          );
+
+        }
+
+        return center;
+
+      }
+
+
+      /* =====================
+         DRAW
+      ===================== */
+
+      function drawWave(
+        playhead = -1
+      ) {
+
+        const width =
+          splitterCanvas.clientWidth;
+
+
+        const height =
+          splitterCanvas.clientHeight;
+
+
+        splitterCtx.clearRect(
+          0,
+          0,
+          width,
+          height
+        );
+
+
+        /* =====================
+           BACKGROUND
+        ===================== */
+
+        splitterCtx.fillStyle =
+          "#080808";
+
+
+        splitterCtx.fillRect(
+          0,
+          0,
+          width,
+          height
+        );
+
+
+        /* =====================
+           CENTER LINE
+        ===================== */
+
+        splitterCtx.strokeStyle =
+          "#252525";
+
+
+        splitterCtx.lineWidth = 1;
+
+
+        splitterCtx.beginPath();
+
+
+        splitterCtx.moveTo(
+          0,
+          height / 2
+        );
+
+
+        splitterCtx.lineTo(
+          width,
+          height / 2
+        );
+
+
+        splitterCtx.stroke();
+
+
+        /* =====================
+           WAVEFORM
+        ===================== */
+
+        const stage =
+          getCurrentStage();
+
+
+        if (!stage) return;
+
+
+        splitterCtx.strokeStyle =
+          "#ffffff";
+
+
+        splitterCtx.lineWidth = 2;
+
+
+        splitterCtx.beginPath();
+
+
+        for (
+          let x = 0;
+          x <= width;
+          x++
+        ) {
+
+          const y =
+            getWaveY(
+              x,
+              stage.waveform,
+              width,
+              height
+            );
+
+
+          if (x === 0) {
+
+            splitterCtx.moveTo(
+              x,
+              y
+            );
+
+          } else {
+
+            splitterCtx.lineTo(
+              x,
+              y
+            );
+
+          }
+
+        }
+
+
+        splitterCtx.stroke();
+
+
+        /* =====================
+           SPLIT GUIDES
+        ===================== */
+
+        if (
+          currentPattern &&
+          currentPattern.length > 0
+        ) {
+
+          currentPattern.forEach(
+            (target, index) => {
+
+              /*
+               * 音楽上の正確な時間
+               */
+
+              const targetTime =
+                LEAD_IN +
+                (
+                  target *
+                  BEAT_TIME
+                );
+
+
+              /*
+               * 画面上の位置
+               */
+
+              const targetX =
+                timeToX(
+                  targetTime
+                );
+
+
+              /* =====================
+                 GOOD AREA
+              ===================== */
+
+              const goodMs =
+                170;
+
+
+              const goodLeft =
+                timeToX(
+                  targetTime -
+                  goodMs
+                );
+
+
+              const goodRight =
+                timeToX(
+                  targetTime +
+                  goodMs
+                );
+
+
+              splitterCtx.fillStyle =
+                "rgba(255,255,255,0.045)";
+
+
+              splitterCtx.fillRect(
+                goodLeft,
+                0,
+                goodRight - goodLeft,
+                height
+              );
+
+
+              /* =====================
+                 PERFECT AREA
+              ===================== */
+
+              const perfectMs =
+                90;
+
+
+              const perfectLeft =
+                timeToX(
+                  targetTime -
+                  perfectMs
+                );
+
+
+              const perfectRight =
+                timeToX(
+                  targetTime +
+                  perfectMs
+                );
+
+
+              splitterCtx.fillStyle =
+                "rgba(255,255,255,0.10)";
+
+
+              splitterCtx.fillRect(
+                perfectLeft,
+                0,
+                perfectRight - perfectLeft,
+                height
+              );
+
+
+              /* =====================
+                 TARGET LINE
+              ===================== */
+
+              splitterCtx.strokeStyle =
+                "rgba(255,255,255,0.65)";
+
+
+              splitterCtx.lineWidth = 2;
+
+
+              splitterCtx.beginPath();
+
+
+              splitterCtx.moveTo(
+                targetX,
+                0
+              );
+
+
+              splitterCtx.lineTo(
+                targetX,
+                height
+              );
+
+
+              splitterCtx.stroke();
+
+
+              /* =====================
+                 TARGET MARKERS
+              ===================== */
+
+              splitterCtx.fillStyle =
+                "rgba(255,255,255,0.85)";
+
+
+              /* 上 */
+
+              splitterCtx.beginPath();
+
+
+              splitterCtx.moveTo(
+                targetX - 6,
+                8
+              );
+
+
+              splitterCtx.lineTo(
+                targetX + 6,
+                8
+              );
+
+
+              splitterCtx.lineTo(
+                targetX,
+                20
+              );
+
+
+              splitterCtx.closePath();
+
+
+              splitterCtx.fill();
+
+
+              /* 下 */
+
+              splitterCtx.beginPath();
+
+
+              splitterCtx.moveTo(
+                targetX - 6,
+                height - 8
+              );
+
+
+              splitterCtx.lineTo(
+                targetX + 6,
+                height - 8
+              );
+
+
+              splitterCtx.lineTo(
+                targetX,
+                height - 20
+              );
+
+
+              splitterCtx.closePath();
+
+
+              splitterCtx.fill();
+
+
+              /* =====================
+                 CUT済み
+              ===================== */
+
+              if (
+                index < currentCutIndex
+              ) {
+
+                splitterCtx.strokeStyle =
+                  "#ffffff";
+
+
+                splitterCtx.lineWidth = 4;
+
+
+                splitterCtx.beginPath();
+
+
+                splitterCtx.moveTo(
+                  targetX,
+                  0
+                );
+
+
+                splitterCtx.lineTo(
+                  targetX,
+                  height
+                );
+
+
+                splitterCtx.stroke();
+
+              }
+
+            }
+          );
+
+        }
+
+
+        /* =====================
+           MOVING PLAYHEAD
+        ===================== */
+
+        if (
+          playhead >= 0
+        ) {
+
+          splitterCtx.strokeStyle =
+            "#ffffff";
+
+
+          splitterCtx.lineWidth = 5;
+
+
+          splitterCtx.beginPath();
+
+
+          splitterCtx.moveTo(
+            playhead,
+            0
+          );
+
+
+          splitterCtx.lineTo(
+            playhead,
+            height
+          );
+
+
+          splitterCtx.stroke();
+
+
+          /* 上マーカー */
+
+          splitterCtx.fillStyle =
+            "#ffffff";
+
+
+          splitterCtx.beginPath();
+
+
+          splitterCtx.moveTo(
+            playhead - 8,
+            7
+          );
+
+
+          splitterCtx.lineTo(
+            playhead + 8,
+            7
+          );
+
+
+          splitterCtx.lineTo(
+            playhead,
+            21
+          );
+
+
+          splitterCtx.closePath();
+
+
+          splitterCtx.fill();
+
+
+          /* 下マーカー */
+
+          splitterCtx.beginPath();
+
+
+          splitterCtx.moveTo(
+            playhead - 8,
+            height - 7
+          );
+
+
+          splitterCtx.lineTo(
+            playhead + 8,
+            height - 7
+          );
+
+
+          splitterCtx.lineTo(
+            playhead,
+            height - 21
+          );
+
+
+          splitterCtx.closePath();
+
+
+          splitterCtx.fill();
+
+        }
+
+      }
+
+      /* =====================
+         TIME → X
+      ===================== */
+      function timeToX(
+        timeMs
+      ) {
+
+        const stage =
+          getCurrentStage();
+
+
+        if (!stage) return 0;
+
+
+        const lastCut =
+          Math.max(
+            ...stage.cuts
+          );
+
+
+        const totalTime =
+          LEAD_IN +
+          (
+            lastCut *
+            BEAT_TIME
+          ) +
+          LEAD_OUT;
+
+
+        const width =
+          splitterCanvas.clientWidth;
+
+
+        const progress =
+          timeMs /
+          totalTime;
+
+
+        const x =
+          progress *
+          width *
+          SPACING_SCALE;
+
+
+        return Math.min(
+          x,
+          width
+        );
+
+      }
+
+
+      /* =====================
+         CURRENT STAGE
+      ===================== */
+
+      function getCurrentStage() {
+
+        const levelStages =
+          stages[
+            selectedLevel
+          ];
+
+
+        if (
+          !levelStages
+        ) return null;
+
+
+        return levelStages[
+          currentStage
+        ];
+
+      }
+
+
+      /* =====================
+         START
+      ===================== */
+
+      splitterStart.addEventListener(
+        "click",
+        () => {
+
+          if (
+            gameRunning
+          ) return;
+
+
+          startGame();
+
+        }
+      );
+
+
+      function startGame() {
+
+        currentStage = 0;
+
+        totalScore = 0;
+
+        combo = 0;
+
+        maxCombo = 0;
+
+        cutsMade = 0;
+
+        correctCuts = 0;
+
+
+        splitterScore.textContent =
+          "SCORE 0";
+
+
+        splitterCombo.textContent =
+          "COMBO ×0";
+
+
+        splitterStatus.textContent =
+          "準備してください。";
+
+
+        splitterStart.disabled =
+          true;
+
+
+        startStage();
+
+      }
+
+
+      /* =====================
+         START STAGE
+      ===================== */
+
+      function startStage() {
+
+        const stage =
+          getCurrentStage();
+
+
+        if (!stage) {
+
+          finishGame();
+
+          return;
+
+        }
+
+
+        gameRunning = false;
+
+        currentCutIndex = 0;
+
+        stageScore = 0;
+
+
+        currentPattern =
+          stage.cuts.slice();
+
+
+        targetTimes =
+          currentPattern.map(
+            beat => {
+
+              return (
+                LEAD_IN +
+                beat *
+                BEAT_TIME
+              );
+
+            }
+          );
+
+
+        splitterLevel.textContent =
+          `${selectedLevel.toUpperCase()} — ${stage.name}`;
+
+
+        splitterPattern.textContent =
+          stage.pattern;
+
+
+        splitterResult.textContent =
+          "READY";
+
+
+        splitterStatus.textContent =
+          "まもなく開始";
+
+
+        drawWave();
+
+
+        setTimeout(
+          () => {
+
+            gameRunning = true;
+
+            startTime =
+              performance.now();
+
+
+            splitterStatus.textContent =
+              "CUTボタンで分割！";
+
+
+            playBeat();
+
+
+            animationFrame =
+              requestAnimationFrame(
+                gameLoop
+              );
+
+          },
+          1000
+        );
+
+      }
+
+      /* =====================
+         GAME LOOP
+      ===================== */
+
+      function gameLoop(
+        now
+      ) {
+
+        if (
+          !gameRunning
+        ) return;
+
+
+        const elapsed =
+          now -
+          startTime;
+
+
+        const stage =
+          getCurrentStage();
+
+
+        if (!stage) return;
+
+
+        const lastCut =
+          Math.max(
+            ...stage.cuts
+          );
+
+
+        const totalTime =
+          LEAD_IN +
+          (
+            lastCut *
+            BEAT_TIME
+          ) +
+          LEAD_OUT;
+
+
+        if (
+          elapsed >= totalTime
+        ) {
+
+          endStage();
+
+          return;
+
+        }
+
+
+        /*
+         * 現在位置
+         */
+
+        const playhead =
+          timeToX(
+            elapsed
+          );
+
+
+        /*
+         * 描画
+         */
+
+        drawWave(
+          playhead
+        );
+
+
+        /*
+         * 次のフレーム
+         */
+
+        animationFrame =
+          requestAnimationFrame(
+            gameLoop
+          );
+
+      }
+
+
+      /* =====================
+         PLAYBEAT
+      ===================== */
+
+      function playBeat() {
+
+        if (
+          !gameRunning
+        ) return;
+
+
+        const elapsed =
+          (
+            performance.now() -
+            startTime
+          );
+
+        const stage =
+          getCurrentStage();
+
+
+        if (!stage) return;
+
+
+        const lastCut =
+          Math.max(
+            ...stage.cuts
+          );
+
+
+        const totalTime =
+          LEAD_IN +
+          lastCut *
+          BEAT_TIME +
+          LEAD_OUT;
+
+
+        if (
+          elapsed >= totalTime
+        ) return;
+
+
+        beatSound.currentTime = 0;
+
+        beatSound.play()
+          .catch(() => {});
+
+
+        setTimeout(
+          playBeat,
+          BEAT_TIME
+        );
+
+      }
+
+
+      /* =====================
+         CUT BUTTON
+      ===================== */
+
+      const cutButton =
+        document.createElement(
+          "button"
+        );
+
+
+      cutButton.id =
+        "splitterCut";
+
+
+      cutButton.textContent =
+        "CUT";
+
+
+      cutButton.type =
+        "button";
+
+
+      splitterStart.parentNode.insertBefore(
+        cutButton,
+        splitterReset
+      );
+
+
+      cutButton.addEventListener(
+        "click",
+        () => {
+
+          if (
+            !gameRunning
+          ) return;
+
+
+          cutWave();
+
+        }
+      );
+
+
+      /* =====================
+         CUT
+      ===================== */
+
+      function cutWave() {
+
+        const now =
+          performance.now();
+
+
+        const elapsed =
+          now -
+          startTime;
+
+
+        const target =
+          targetTimes[
+            currentCutIndex
+          ];
+
+
+        if (
+          target === undefined
+        ) return;
+
+
+        const difference =
+          Math.abs(
+            elapsed -
+            target
+          );
+
+
+        cutsMade++;
+
+
+        /* =====================
+           SCORE
+        ===================== */
+
+        const perfectRange =
+          90;
+
+
+        const goodRange =
+          170;
+
+
+        let points = 0;
+
+        let judgement =
+          "MISS";
+
+
+        if (
+          difference <=
+          perfectRange
+        ) {
+
+          points = 100;
+
+          judgement =
+            "PERFECT";
+
+          combo++;
+
+          correctCuts++;
+
+
+        } else if (
+          difference <=
+          goodRange
+        ) {
+
+          points = 70;
+
+          judgement =
+            "GOOD";
+
+          combo++;
+
+          correctCuts++;
+
+
+        } else {
+
+          points = 0;
+
+          combo = 0;
+
+        }
+
+
+        maxCombo =
+          Math.max(
+            maxCombo,
+            combo
+          );
+
+
+        stageScore += points;
+
+        totalScore += points;
+
+
+        splitterResult.textContent =
+          judgement;
+
+
+        splitterCombo.textContent =
+          `COMBO ×${combo}`;
+
+
+        splitterScore.textContent =
+          `SCORE ${totalScore}`;
+
+
+        /* =====================
+           CUT SOUND
+        ===================== */
+
+        cutSound.currentTime = 0;
+
+        cutSound.play()
+          .catch(() => {});
+
+
+        /* =====================
+           NEXT TARGET
+        ===================== */
+
+        currentCutIndex++;
+
+
+        if (
+          currentCutIndex >=
+          targetTimes.length
+        ) {
+
+          endStage();
+
+        }
+
+      }
+
+
+      /* =====================
+         END STAGE
+      ===================== */
+
+      function endStage() {
+
+        if (
+          !gameRunning
+        ) return;
+
+
+        gameRunning = false;
+
+
+        if (
+          animationFrame
+        ) {
+
+          cancelAnimationFrame(
+            animationFrame
+          );
+
+        }
+
+
+        const stage =
+          getCurrentStage();
+
+
+        const maxPoints =
+          stage.cuts.length *
+          100;
+
+
+        const accuracy =
+          maxPoints > 0
+            ? (
+                stageScore /
+                maxPoints
+              ) *
+              100
+            : 0;
+
+
+        splitterResult.textContent =
+          `${accuracy.toFixed(1)}%`;
+
+
+        splitterStatus.textContent =
+          `${stage.name} COMPLETE`;
+
+
+        currentStage++;
+
+
+        if (
+          currentStage <
+          stages[selectedLevel].length
+        ) {
+
+          setTimeout(
+            startStage,
+            1500
+          );
+
+        } else {
+
+          setTimeout(
+            finishGame,
+            1500
+          );
+
+        }
+
+      }
+
+
+      /* =====================
+         FINISH
+      ===================== */
+
+      function finishGame() {
+
+        gameRunning = false;
+
+
+        if (
+          animationFrame
+        ) {
+
+          cancelAnimationFrame(
+            animationFrame
+          );
+
+        }
+
+
+        const totalCuts =
+          stages[selectedLevel]
+            .reduce(
+              (
+                total,
+                stage
+              ) => {
+
+                return (
+                  total +
+                  stage.cuts.length
+                );
+
+              },
+              0
+            );
+
+
+        const maxPoints =
+          totalCuts * 100;
+
+
+        const accuracy =
+          maxPoints > 0
+            ? (
+                totalScore /
+                maxPoints
+              ) *
+              100
+            : 0;
+
+
+        splitterResult.textContent =
+          `${accuracy.toFixed(1)}%`;
+
+
+        splitterStatus.textContent =
+          "ALL STAGES COMPLETE";
+
+
+        splitterCombo.textContent =
+          `MAX COMBO ×${maxCombo}`;
+
+
+        splitterStart.disabled =
+          false;
+
+
+        if (
+          accuracy >= 90
+        ) {
+
+          splitterResult.textContent =
+            "EXCELLENT";
+
+        } else if (
+          accuracy >= 75
+        ) {
+
+          splitterResult.textContent =
+            "GREAT";
+
+        } else if (
+          accuracy >= 50
+        ) {
+
+          splitterResult.textContent =
+            "GOOD";
+
+        } else {
+
+          splitterResult.textContent =
+            "KEEP TRYING";
+
+        }
+
+      }
+
+
+      /* =====================
+         RESET
+      ===================== */
+
+      splitterReset.addEventListener(
+        "click",
+        () => {
+
+          gameRunning = false;
+
+
+          if (
+            animationFrame
+          ) {
+
+            cancelAnimationFrame(
+              animationFrame
+            );
+
+          }
+
+
+          currentStage = 0;
+
+          currentCutIndex = 0;
+
+          totalScore = 0;
+
+          combo = 0;
+
+          maxCombo = 0;
+
+          cutsMade = 0;
+
+          correctCuts = 0;
+
+
+          splitterStart.disabled =
+            false;
+
+
+          splitterScore.textContent =
+            "SCORE --";
+
+
+          splitterStatus.textContent =
+            "STARTを押してください。";
+
+
+          splitterResult.textContent =
+            "READY";
+
+
+          splitterCombo.textContent =
+            "COMBO ×0";
+
+
+          splitterLevel.textContent =
+            "EASY";
+
+
+          splitterPattern.textContent =
+            "4/4 — タン・タン・タン・タン";
+
+
+          drawWave();
+
+        }
+      );
+
+
+      /* =====================
+         DIFFICULTY
+      ===================== */
+
+      difficultyButtons.forEach(
+        button => {
+
+          button.addEventListener(
+            "click",
+            () => {
+
+              if (
+                gameRunning
+              ) return;
+
+
+              difficultyButtons.forEach(
+                other => {
+
+                  other.classList.remove(
+                    "active"
+                  );
+
+                }
+              );
+
+
+              button.classList.add(
+                "active"
+              );
+
+
+              selectedLevel =
+                button.dataset.level;
+
+
+              currentStage = 0;
+
+
+              const firstStage =
+                stages[
+                  selectedLevel
+                ][0];
+
+
+              splitterLevel.textContent =
+                selectedLevel.toUpperCase();
+
+
+              splitterPattern.textContent =
+                firstStage.pattern;
+
+
+              splitterScore.textContent =
+                "SCORE --";
+
+
+              splitterStatus.textContent =
+                "STARTを押してください。";
+
+
+              splitterResult.textContent =
+                "READY";
+
+
+              splitterCombo.textContent =
+                "COMBO ×0";
+
+
+              drawWave();
+
+            }
+          );
+
+        }
+      );
+
+
+      /* =====================
+         INITIALIZE
+      ===================== */
+
+      resizeCanvas();
+
+    </script>
   </body>
-</html>
-</body>
 </html>
