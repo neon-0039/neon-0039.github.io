@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Yuudachi Hertz | Official Site</title>
+  <title>夕立ヘルツ|UTAU音源公式</title>
   <meta name="description" content="UTAU音源「夕立ヘルツ」公式サイト">
 
   <style>
@@ -639,6 +639,286 @@
       opacity: 0.85;
     }
 
+    .about-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+    }
+
+    .about-card {
+      aspect-ratio: 1 / 1;
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* =====================
+       SINE WAVE GAME
+    ===================== */
+
+    .wave-game {
+      background: var(--white);
+      padding-top: 30px;
+    }
+
+    .wave-game details {
+      border-top: 1px solid var(--black);
+      border-bottom: 1px solid var(--black);
+    }
+
+    .wave-game summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 25px 0;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 20px;
+
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .wave-game summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .wave-game summary span {
+      color: #888;
+      font-size: 10px;
+      letter-spacing: .18em;
+      font-weight: 400;
+    }
+
+    .wave-game summary::after {
+      content: "+";
+      font-size: 25px;
+      font-weight: 300;
+    }
+
+    .wave-game details[open] summary::after {
+      content: "−";
+    }
+
+    .game-inner {
+      padding: 10px 0 45px;
+    }
+
+    .game-description {
+      color: #666;
+      font-size: 13px;
+      margin-bottom: 25px;
+    }
+
+    .wave-area {
+      width: 100%;
+      background: #080808;
+      border: 1px solid #222;
+
+      touch-action: none;
+    }
+
+    #waveCanvas {
+      display: block;
+      width: 100%;
+      height: 280px;
+
+      touch-action: none;
+      cursor: crosshair;
+    }
+
+        /* ---------------------
+       SCORE
+    --------------------- */
+
+    .game-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 20px;
+
+      margin-top: 20px;
+    }
+
+    #gameStatus {
+      color: #777;
+      font-size: 13px;
+      transition: .2s;
+    }
+
+    #score {
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      line-height: 1;
+
+      transform-origin: right center;
+    }
+
+    /* スコア表示アニメーション */
+
+    #score.score-pop {
+      animation: scorePop .55s cubic-bezier(.2, .8, .2, 1);
+    }
+
+    @keyframes scorePop {
+
+      0% {
+        transform: scale(.55);
+        opacity: 0;
+      }
+
+      55% {
+        transform: scale(1.18);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+    }
+
+
+    /* ---------------------
+       SPECIAL UNLOCK
+    --------------------- */
+
+    .special-unlock {
+      display: none;
+
+      margin-top: 30px;
+      padding: 25px;
+
+      border: 1px solid var(--black);
+
+      background: var(--black);
+      color: var(--white);
+
+      animation: unlockAppear .6s ease;
+    }
+
+    .special-unlock.show {
+      display: block;
+    }
+
+    .special-unlock-label {
+      margin-bottom: 8px;
+
+      font-size: 11px;
+      font-weight: 800;
+
+      letter-spacing: .2em;
+    }
+
+    .special-unlock p {
+      margin: 0 0 20px;
+
+      color: #aaa;
+      font-size: 12px;
+    }
+
+    .special-download {
+      display: inline-block;
+
+      padding: 13px 22px;
+
+      border: 1px solid var(--white);
+
+      background: var(--white);
+      color: var(--black);
+
+      text-decoration: none;
+
+      font-size: 11px;
+      font-weight: 800;
+
+      letter-spacing: .12em;
+
+      transition: .2s;
+    }
+
+    .special-download:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    @keyframes unlockAppear {
+
+      0% {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+
+    /* ---------------------
+       BUTTONS
+    --------------------- */
+
+    .game-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 25px;
+    }
+
+    .game-buttons button {
+      padding: 12px 25px;
+
+      border: 1px solid var(--black);
+
+      background: var(--white);
+      color: var(--black);
+
+      cursor: pointer;
+
+      font: inherit;
+      font-size: 11px;
+      font-weight: 700;
+
+      letter-spacing: .12em;
+
+      transition: .2s;
+    }
+
+    .game-buttons button:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+
+    @media (max-width: 800px) {
+
+      #waveCanvas {
+        height: 220px;
+      }
+
+      .game-info {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      #score {
+        font-size: 32px;
+      }
+
+      .special-unlock {
+        padding: 20px;
+      }
+
+    }
   </style>
 </head>
 
@@ -693,7 +973,8 @@
 
           <p class="hero-subtitle">
             UTAU向け音源「夕立ヘルツ」の公式サイトです。<br>
-            音源情報、配布、利用規約、最新情報、最近のどうでもいい話などを掲載しています。
+            音源情報、配布、利用規約、最新情報、最近のどうでもいい話などを掲載しています。<br>
+            すみません立ち絵画像がないので画像はスペクトルです。
           </p>
 
           <div class="hero-actions">
@@ -713,8 +994,8 @@
       <div class="hero-visual">
 
           <img
-            src="images/スクリーンショット 2026-08-25 145059.png"
-            alt="verα1.2における「あ」の波形"
+            src="images/スクリーンショット 2026-08-25 150346.png"
+            alt="verα1.2における「あ」のスペクトル"
             class="character-image"
           >
 
@@ -753,11 +1034,14 @@
         <div class="about-grid">
 
           <div class="about-card">
-            <div class="about-card-title">
-              VOICEBANK<br>
-              PROFILE
-            </div>
-          </div>
+
+            <img
+              src="images/スクリーンショット 2026-08-25 145059.png"
+              alt="verα1.2における「あ」の波形"
+              class="about-image"
+            >
+
+        </div>
 
 
           <div class="about-text">
@@ -830,17 +1114,17 @@
 
           <div class="info-item">
             <span class="info-label">TYPE</span>
-            <div class="info-value">単独音 / 連続音(気が向いたら制作)</div>
+            <div class="info-value">単独音(verα1.0~α1.15)</div>
           </div>
 
           <div class="info-item">
             <span class="info-label">RELEASE</span>
-            <div class="info-value">2025.12.25</div>
+            <div class="info-value">2025.12.25(製作開始)</div>
           </div>
 
           <div class="info-item">
             <span class="info-label">HERTZ</span>
-            <div class="info-value">400Hz</div>
+            <div class="info-value">400Hz(verα1.0~α1.15)</div>
           </div>
 
         </div>
@@ -913,7 +1197,7 @@
           </div>
 
           <p class="section-description">
-            更新情報・お知らせ。
+            更新情報・お知らせ
           </p>
 
         </div>
@@ -928,7 +1212,7 @@
             </time>
 
             <span class="news-title">
-              公式サイト公開
+              本公式サイト公開
             </span>
 
             <span class="news-arrow">
@@ -1014,7 +1298,7 @@
           </div>
 
           <p class="section-description">
-            利用時に確認してほしい情報。
+            利用時に確認してほしい情報
           </p>
 
         </div>
@@ -1026,9 +1310,33 @@
             <div class="guide-number">01</div>
 
             <div>
-              <h3>利用規約</h3>
+              <h3>夕立 ヘルツ（Yudachi Hertz）利用規約</h3>
               <p>
-                音源の利用条件・禁止事項などを記載します。
+                1. はじめに<br>
+                本音源は、「夕立 ヘルツ」のUTAU向け音声ライブラリです。本音源をダウンロード・使用した時点で、本規約に同意したものとみなします。<br>
+                本音源を使用して発生したトラブルや損害について、制作者は一切の責任を負いません。<br>
+                ご不明な点がございましたらご連絡ください。できるだけ早く返答を致します。<br>
+                2. 権利について<br>
+                著作権: 音声データおよびキャラクターデザイン「夕立 ヘルツ」の著作権は、制作者・neon_0039(akibako_iovo)に帰属します。<br>
+                商標について: キャラクター名称「夕立 ヘルツ」を制作者に無断で商標登録することを固く禁止します。<br>
+                ・クレジット表記について（必須項目）<br>
+                本音源を使用した楽曲、動画、イラスト等を公開する際は、必ず以下のいずれかのクレジットを表記してください。<br>
+                  表記例: 「夕立 ヘルツ」「音源：夕立 ヘルツ」「Character: Yudachi Hertz」<br>
+                  もしよろしければ、制作者のSNS（Misskey等）へのリンクも併記してくだされば幸いです。<br>
+                4. 許可されること（非営利・個人）<br>
+                楽曲制作・公開: 本音源を使用した楽曲の制作、動画サイトへの投稿。<br>
+                二次創作: イラストの制作・公開、およびファン活動。なお、18禁に指定されるようなジャンルの創作は禁止はしませんが非推奨とさせていただきます。<br>
+                改変: UTAU上でのパラメータ調整、使いやすくするためのファイル名変更。<br>
+                流用: 子音を別の音声と組み合わせて利用すること。また、音声データを参考にすること。<br>
+                5. 禁止事項<br>
+                自作発言: 音源データやキャラクターデザインを、自分が作ったと偽る行為。<br>
+                無断再配布: 音源データそのものを、許可なく再配布すること。<br>
+                クレジット未記載: 意図的に制作者の情報を記載しないで利用すること。<br>
+                公序良俗に反する利用: 特定の個人・団体への攻撃、政治・宗教活動への過度な利用。<br>
+                AI学習や生成に利用すること。COEIROINK化はいずれ行うと思います。<br>
+                6. 商用利用<br>
+                個人による同人活動等は無償で許可します。企業利用や大規模な収益化は事前に必ずご相談ください。<br>
+                個人・企業等にかかわらず、グッズ制作・販売をする場合は一度お問い合わせください。<br>
               </p>
             </div>
           </div>
@@ -1038,26 +1346,100 @@
             <div class="guide-number">02</div>
 
             <div>
-              <h3>クレジット</h3>
+              <h3>使用においての注意点</h3>
               <p>
-                音源を使用した作品での表記について。
-              </p>
-            </div>
-          </div>
-
-
-          <div class="guide-item">
-            <div class="guide-number">03</div>
-
-            <div>
-              <h3>使用方法</h3>
-              <p>
-                UTAUで音源を使用する際の簡単な案内。
+                本音源ファイルに、oto.ini(原音設定ファイル)は同梱されていません。<br>
+                →verα1.1については、BOOTHにて設定ファイル単体でのDLできるようになっています。<br>
+                本音源は、サイン波由来の合成のため、出力が上手くいかない場合があります。<br>
+                ジェンダーフラグは0~g-10程度が一番使いやすいと思います。<br>
+                基底周波数を400Hzという高い音に設定してる関係上、低い音の発音が苦手な場合があります。
               </p>
             </div>
           </div>
 
         </div>
+
+      </div>
+
+    </section>
+
+    <!-- =====================
+         SINE WAVE GAME
+    ====================== -->
+
+    <section class="wave-game">
+
+      <div class="container">
+
+        <details>
+
+          <summary>
+            <span>06 / MINI GAME</span>
+            サイン波チャレンジ
+          </summary>
+
+          <div class="game-inner">
+
+            <p class="game-description">
+              お手本のサイン波をできるだけ、一筆で正確になぞってください。
+            </p>
+
+            <div class="wave-area">
+
+              <canvas id="waveCanvas"></canvas>
+
+            </div>
+
+            <div class="game-info">
+
+              <div id="gameStatus">
+                STARTを押して挑戦してください。
+              </div>
+
+              <div id="score">
+                SCORE --
+              </div>
+
+            </div>
+
+
+            <div
+              id="specialUnlock"
+              class="special-unlock"
+            >
+
+              <div class="special-unlock-label">
+                SPECIAL UNLOCKED
+              </div>
+
+              <p>
+                高得点記念・特別音素を解禁しました。
+              </p>
+
+              <a
+                href="special.zip"
+                download
+                class="special-download"
+              >
+                SPECIAL DOWNLOAD
+              </a>
+
+            </div>
+
+
+            <div class="game-buttons">
+
+              <button id="startButton">
+                START
+              </button>
+
+              <button id="resetButton">
+                RESET
+              </button>
+
+            </div>
+
+        </details>
 
       </div>
 
@@ -1076,7 +1458,7 @@
 
           <div>
             <div class="section-label">
-              06 / RANDOM TALK
+              07 / RANDOM TALK
             </div>
 
             <h2 class="section-title">
@@ -1129,7 +1511,7 @@
 
           <div>
             <div class="section-label">
-              06 / LINKS
+              08 / LINKS
             </div>
 
             <h2 class="section-title">
@@ -1217,6 +1599,822 @@
     </div>
 
   </footer>
+    <script>
 
+      const canvas =
+        document.getElementById("waveCanvas");
+
+      const ctx =
+        canvas.getContext("2d");
+
+
+      const startButton =
+        document.getElementById("startButton");
+
+      const resetButton =
+        document.getElementById("resetButton");
+
+
+      const statusText =
+        document.getElementById("gameStatus");
+
+
+      const scoreText =
+        document.getElementById("score");
+
+
+      const specialUnlock =
+        document.getElementById("specialUnlock");
+
+
+      /* =====================
+         CANVAS
+      ===================== */
+
+      const canvasWidth = 1000;
+      const canvasHeight = 280;
+
+      canvas.width = canvasWidth;
+      canvas.height = canvasHeight;
+
+
+      /* =====================
+         GAME STATE
+      ===================== */
+
+      let drawing = false;
+      let started = false;
+
+      let userPoints = [];
+
+
+      /* =====================
+         SINE WAVE
+      ===================== */
+
+      function sineY(x) {
+
+        const center =
+          canvasHeight / 2;
+
+        const amplitude = 85;
+
+        const cycles = 2;
+
+        return center -
+          Math.sin(
+            (x / canvasWidth) *
+            Math.PI *
+            2 *
+            cycles
+          ) * amplitude;
+
+      }
+
+
+      /* =====================
+         SQUARE WAVE
+      ===================== */
+
+      function squareY(x) {
+
+        const center =
+          canvasHeight / 2;
+
+        const amplitude = 85;
+
+        const cycles = 2;
+
+        const phase =
+          Math.sin(
+            (x / canvasWidth) *
+            Math.PI *
+            2 *
+            cycles
+          );
+
+        return center -
+          (phase >= 0
+            ? amplitude
+            : -amplitude);
+
+      }
+
+
+      /* =====================
+         DRAW
+      ===================== */
+
+      function draw() {
+
+        ctx.clearRect(
+          0,
+          0,
+          canvasWidth,
+          canvasHeight
+        );
+
+
+        /* background */
+
+        ctx.fillStyle = "#080808";
+
+        ctx.fillRect(
+          0,
+          0,
+          canvasWidth,
+          canvasHeight
+        );
+
+
+        /* center line */
+
+        ctx.strokeStyle = "#252525";
+
+        ctx.lineWidth = 1;
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+          0,
+          canvasHeight / 2
+        );
+
+        ctx.lineTo(
+          canvasWidth,
+          canvasHeight / 2
+        );
+
+        ctx.stroke();
+
+
+        /* =====================
+           SINE GUIDE
+
+           薄いお手本
+        ===================== */
+
+        ctx.strokeStyle =
+          "rgba(255,255,255,0.13)";
+
+        ctx.lineWidth = 2;
+
+        ctx.beginPath();
+
+
+        for (
+          let x = 0;
+          x <= canvasWidth;
+          x++
+        ) {
+
+          const y =
+            sineY(x);
+
+
+          if (x === 0) {
+
+            ctx.moveTo(
+              x,
+              y
+            );
+
+          } else {
+
+            ctx.lineTo(
+              x,
+              y
+            );
+
+          }
+
+        }
+
+
+        ctx.stroke();
+
+
+        /* =====================
+           USER DRAWING
+        ===================== */
+
+        if (
+          userPoints.length > 1
+        ) {
+
+          ctx.strokeStyle =
+            "#ffffff";
+
+          ctx.lineWidth = 4;
+
+          ctx.lineCap = "round";
+          ctx.lineJoin = "round";
+
+          ctx.beginPath();
+
+
+          userPoints.forEach(
+            (point, index) => {
+
+              if (index === 0) {
+
+                ctx.moveTo(
+                  point.x,
+                  point.y
+                );
+
+              } else {
+
+                ctx.lineTo(
+                  point.x,
+                  point.y
+                );
+
+              }
+
+            }
+          );
+
+
+          ctx.stroke();
+
+        }
+
+      }
+
+
+      /* =====================
+         POSITION
+      ===================== */
+
+      function getPosition(event) {
+
+        const rect =
+          canvas.getBoundingClientRect();
+
+
+        return {
+
+          x:
+            (event.clientX -
+              rect.left) *
+            canvasWidth /
+            rect.width,
+
+          y:
+            (event.clientY -
+              rect.top) *
+            canvasHeight /
+            rect.height
+
+        };
+
+      }
+
+
+      /* =====================
+         SCORE ANIMATION
+      ===================== */
+
+      function animateScore(
+        finalScore
+      ) {
+
+        const duration = 900;
+
+        const startTime =
+          performance.now();
+
+
+        scoreText.classList.remove(
+          "score-pop"
+        );
+
+
+        void scoreText.offsetWidth;
+
+
+        scoreText.classList.add(
+          "score-pop"
+        );
+
+
+        function update(
+          currentTime
+        ) {
+
+          const elapsed =
+            currentTime -
+            startTime;
+
+
+          const progress =
+            Math.min(
+              elapsed / duration,
+              1
+            );
+
+
+          /* easeOut */
+
+          const eased =
+            1 -
+            Math.pow(
+              1 - progress,
+              3
+            );
+
+
+          const currentScore =
+            finalScore * eased;
+
+
+          scoreText.textContent =
+            `SCORE ${currentScore.toFixed(1)}`;
+
+
+          if (progress < 1) {
+
+            requestAnimationFrame(
+              update
+            );
+
+          } else {
+
+            scoreText.textContent =
+              `SCORE ${finalScore.toFixed(1)}`;
+
+          }
+
+        }
+
+
+        requestAnimationFrame(
+          update
+        );
+
+      }
+
+
+      /* =====================
+         START
+      ===================== */
+
+      startButton.addEventListener(
+        "click",
+        () => {
+
+          started = true;
+
+          drawing = false;
+
+          userPoints = [];
+
+
+          scoreText.textContent =
+            "SCORE --";
+
+
+          statusText.textContent =
+            "一筆でサイン波を描いてください。";
+
+
+          specialUnlock.classList.remove(
+            "show"
+          );
+
+
+          draw();
+
+        }
+      );
+
+
+      /* =====================
+         POINTER DOWN
+      ===================== */
+
+      canvas.addEventListener(
+        "pointerdown",
+        (event) => {
+
+          if (!started) return;
+
+
+          drawing = true;
+
+          userPoints = [];
+
+
+          const point =
+            getPosition(event);
+
+
+          userPoints.push(
+            point
+          );
+
+
+          canvas.setPointerCapture(
+            event.pointerId
+          );
+
+
+          draw();
+
+        }
+      );
+
+
+      /* =====================
+         POINTER MOVE
+      ===================== */
+
+      canvas.addEventListener(
+        "pointermove",
+        (event) => {
+
+          if (!drawing) return;
+
+
+          const point =
+            getPosition(event);
+
+
+          userPoints.push(
+            point
+          );
+
+
+          draw();
+
+        }
+      );
+
+
+      /* =====================
+         POINTER UP
+         ↓
+         即採点
+      ===================== */
+
+      canvas.addEventListener(
+        "pointerup",
+        (event) => {
+
+          if (!drawing) return;
+
+
+          drawing = false;
+
+
+          try {
+
+            canvas.releasePointerCapture(
+              event.pointerId
+            );
+
+          } catch {}
+
+
+          calculateScore();
+
+        }
+      );
+
+
+      /* =====================
+         POINTER CANCEL
+      ===================== */
+
+      canvas.addEventListener(
+        "pointercancel",
+        () => {
+
+          if (!drawing) return;
+
+
+          drawing = false;
+
+          calculateScore();
+
+        }
+      );
+
+
+      /* =====================
+         SCORE
+      ===================== */
+
+      function calculateScore() {
+
+        if (
+          userPoints.length < 20
+        ) {
+
+          scoreText.textContent =
+            "SCORE --";
+
+
+          statusText.textContent =
+            "もう少し長く描いてみてください。";
+
+
+          return;
+
+        }
+
+
+        /* =====================
+           DRAWING WIDTH
+        ===================== */
+
+        const firstX =
+          userPoints[0].x;
+
+
+        const lastX =
+          userPoints[
+            userPoints.length - 1
+          ].x;
+
+
+        const drawingWidth =
+          Math.abs(
+            lastX - firstX
+          );
+
+
+        if (
+          drawingWidth < 400
+        ) {
+
+          scoreText.textContent =
+            "SCORE --";
+
+
+          statusText.textContent =
+            "もっと横いっぱいに描いてみてください。";
+
+
+          return;
+
+        }
+
+
+        /* =====================
+           SINE SCORE
+        ===================== */
+
+        let sineError = 0;
+        let sineCount = 0;
+
+
+        userPoints.forEach(
+          point => {
+
+            if (
+              point.x < 0 ||
+              point.x > canvasWidth
+            ) return;
+
+
+            const target =
+              sineY(point.x);
+
+
+            sineError +=
+              Math.abs(
+                point.y - target
+              );
+
+
+            sineCount++;
+
+          }
+        );
+
+
+        const sineAverage =
+          sineError /
+          sineCount;
+
+
+        let sineScore =
+          100 -
+          sineAverage * 1.15;
+
+
+        sineScore =
+          Math.max(
+            0,
+            Math.min(
+              100,
+              sineScore
+            )
+          );
+
+
+        /* =====================
+           SQUARE SCORE
+        ===================== */
+
+        let squareError = 0;
+        let squareCount = 0;
+
+
+        userPoints.forEach(
+          point => {
+
+            if (
+              point.x < 0 ||
+              point.x > canvasWidth
+            ) return;
+
+
+            const target =
+              squareY(point.x);
+
+
+            squareError +=
+              Math.abs(
+                point.y - target
+              );
+
+
+            squareCount++;
+
+          }
+        );
+
+
+        const squareAverage =
+          squareError /
+          squareCount;
+
+
+        let squareScore =
+          100 -
+          squareAverage * 1.15;
+
+
+        squareScore =
+          Math.max(
+            0,
+            Math.min(
+              100,
+              squareScore
+            )
+          );
+
+
+        /* =====================
+           HIDDEN SQUARE WAVE
+        ===================== */
+
+        if (
+          squareScore >= 85 &&
+          squareScore > sineScore
+        ) {
+
+          animateScore(
+            squareScore
+          );
+
+
+          statusText.textContent =
+            "HIDDEN: SQUARE WAVE.";
+
+
+          if (
+            squareScore >= 90
+          ) {
+
+            unlockSpecial();
+
+          }
+
+
+          return;
+
+        }
+
+
+        /* =====================
+           NORMAL RESULT
+        ===================== */
+
+        animateScore(
+          sineScore
+        );
+
+
+        if (
+          sineScore >= 90
+        ) {
+
+          statusText.textContent =
+            "SPECIAL UNLOCKED.";
+
+
+          unlockSpecial();
+
+
+        } else if (
+          sineScore >= 95
+        ) {
+
+          statusText.textContent =
+            "PERFECT SINE.";
+
+
+        } else if (
+          sineScore >= 85
+        ) {
+
+          statusText.textContent =
+            "VERY GOOD WAVE.";
+
+
+        } else if (
+          sineScore >= 70
+        ) {
+
+          statusText.textContent =
+            "GOOD WAVE.";
+
+
+        } else if (
+          sineScore >= 50
+        ) {
+
+          statusText.textContent =
+            "KEEP TRYING.";
+
+
+        } else {
+
+          statusText.textContent =
+            "WAVE...？";
+
+        }
+
+      }
+
+
+      /* =====================
+         SPECIAL UNLOCK
+      ===================== */
+
+      function unlockSpecial() {
+
+        specialUnlock.classList.add(
+          "show"
+        );
+
+      }
+
+
+      /* =====================
+         RESET
+      ===================== */
+
+      resetButton.addEventListener(
+        "click",
+        () => {
+
+          started = false;
+
+          drawing = false;
+
+          userPoints = [];
+
+
+          scoreText.textContent =
+            "SCORE --";
+
+
+          statusText.textContent =
+            "STARTを押して挑戦してください。";
+
+
+          specialUnlock.classList.remove(
+            "show"
+          );
+
+
+          draw();
+
+        }
+      );
+
+
+      /* =====================
+         INITIAL DRAW
+      ===================== */
+
+      draw();
+
+    </script>
 </body>
 </html>
