@@ -1532,6 +1532,141 @@
       }
 
     }
+    /* =====================
+       SECRET BONUS
+    ===================== */
+
+    .secret-bonus {
+      position: fixed;
+
+      bottom: 0;
+      left: 0;
+      width: 100%;
+
+      background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+      color: var(--white);
+
+      padding: 60px 20px;
+
+      display: none;
+
+      z-index: 999;
+
+      animation: secretBonusAppear .8s cubic-bezier(.34, 1.56, .64, 1);
+    }
+
+    .secret-bonus.show {
+      display: block;
+    }
+
+    .secret-bonus-content {
+      text-align: center;
+
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .secret-bonus-label {
+      font-size: 12px;
+      font-weight: 800;
+
+      letter-spacing: .3em;
+
+      color: #ffd700;
+
+      margin-bottom: 15px;
+    }
+
+    .secret-bonus h2 {
+      font-size: clamp(32px, 6vw, 56px);
+
+      line-height: 1.2;
+      letter-spacing: -.05em;
+
+      margin-bottom: 20px;
+
+      background: linear-gradient(135deg, #fff 0%, #ddd 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .secret-bonus p {
+      font-size: 15px;
+
+      color: #bbb;
+
+      margin-bottom: 30px;
+
+      line-height: 1.8;
+    }
+
+    .secret-bonus-download {
+      display: inline-block;
+
+      padding: 16px 40px;
+
+      border: 2px solid #ffd700;
+
+      background: transparent;
+
+      color: #ffd700;
+
+      text-decoration: none;
+
+      font-size: 13px;
+      font-weight: 800;
+
+      letter-spacing: .15em;
+
+      transition: .3s ease;
+
+      cursor: pointer;
+    }
+
+    .secret-bonus-download:hover {
+      background: #ffd700;
+
+      color: #000;
+
+      transform: translateY(-3px);
+    }
+
+    @keyframes secretBonusAppear {
+
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+    @media (max-width: 800px) {
+
+      .secret-bonus {
+        padding: 40px 20px;
+      }
+
+      .secret-bonus h2 {
+        font-size: 28px;
+      }
+
+      .secret-bonus p {
+        font-size: 14px;
+      }
+
+      .secret-bonus-download {
+        padding: 14px 30px;
+
+        font-size: 12px;
+      }
+
+    }
   </style>
 </head>
 
@@ -2377,6 +2512,48 @@
     </div>
 
   </footer>
+
+  <!-- =====================
+       SECRET BONUS
+  ====================== -->
+
+  <div
+    id="secretBonus"
+    class="secret-bonus"
+  >
+
+    <div class="container">
+
+      <div class="secret-bonus-content">
+
+        <div class="secret-bonus-label">
+          SECRET UNLOCKED
+        </div>
+
+        <h2>
+          暇なんですか？
+        </h2>
+
+        <p>
+          こんな何もないページで25回も往復するんですか...(笑)
+          よっぽど暇な方なんですね？
+          滞在してくれたささやかなお礼(？)をおいておきます　by neon_0039
+        </p>
+
+        <a
+          href="special3.zip"
+          download
+          class="secret-bonus-download"
+        >
+          SPECIAL DOWNLOAD
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
     <script>
 
       const canvas =
@@ -3243,6 +3420,116 @@
 
 
       checkPageTop();
+
+    </script>
+    <!-- SECRET BONUS -->
+
+    <script>
+
+      let scrollDirection = "down";
+      let lastScrollY = 0;
+      let roundTripCount = 0;
+      let secretBonusShown = false;
+
+      const secretBonus =
+        document.getElementById("secretBonus");
+
+      const documentHeight =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+
+      window.addEventListener(
+        "scroll",
+        () => {
+
+          const currentScrollY =
+            window.scrollY;
+
+
+          /* =====================
+             DIRECTION DETECTION
+          ===================== */
+
+          if (
+            currentScrollY > lastScrollY
+          ) {
+
+            /* Scrolling DOWN */
+
+            if (
+              scrollDirection === "up"
+            ) {
+
+              scrollDirection = "down";
+
+              roundTripCount++;
+
+              console.log(
+                `往復回数: ${roundTripCount}`
+              );
+
+            }
+
+          } else if (
+            currentScrollY < lastScrollY
+          ) {
+
+            /* Scrolling UP */
+
+            if (
+              scrollDirection === "down"
+            ) {
+
+              scrollDirection = "up";
+
+              roundTripCount++;
+
+              console.log(
+                `往復回数: ${roundTripCount}`
+              );
+
+            }
+
+          }
+
+
+          lastScrollY = currentScrollY;
+
+
+          /* =====================
+             BOTTOM DETECTION
+          ===================== */
+
+          const isAtBottom =
+            currentScrollY >=
+            documentHeight - 100;
+
+
+          const isAtTop =
+            currentScrollY <= 100;
+
+
+          /* =====================
+             SECRET UNLOCK
+          ===================== */
+
+          if (
+            roundTripCount >= 25 &&
+            isAtBottom &&
+            !secretBonusShown
+          ) {
+
+            secretBonusShown = true;
+
+            secretBonus.classList.add(
+              "show"
+            );
+
+          }
+
+        }
+      );
 
     </script>
     <script>
