@@ -919,6 +919,72 @@
       }
 
     }
+    /* ---------------------
+       PAGE TOP
+    --------------------- */
+
+    .page-top {
+      position: fixed;
+
+      right: 30px;
+      bottom: 30px;
+
+      width: 70px;
+      height: 70px;
+
+      border: 1px solid var(--black);
+
+      background: var(--white);
+      color: var(--black);
+
+      cursor: pointer;
+
+      font: inherit;
+      font-size: 10px;
+      font-weight: 700;
+
+      letter-spacing: .12em;
+
+      opacity: 0;
+      visibility: hidden;
+
+      transform: translateY(15px);
+
+      transition:
+        opacity .25s ease,
+        visibility .25s ease,
+        transform .25s ease,
+        background .2s ease,
+        color .2s ease;
+
+      z-index: 1000;
+    }
+
+    .page-top.show {
+      opacity: 1;
+      visibility: visible;
+
+      transform: translateY(0);
+    }
+
+    .page-top:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    @media (max-width: 800px) {
+
+      .page-top {
+        right: 18px;
+        bottom: 18px;
+
+        width: 58px;
+        height: 58px;
+
+        font-size: 9px;
+      }
+
+    }
   </style>
 </head>
 
@@ -2415,6 +2481,57 @@
 
       draw();
 
+      /* =====================
+         PAGE TOP
+      ===================== */
+
+      const pageTop =
+        document.getElementById("pageTop");
+
+
+      window.addEventListener(
+        "scroll",
+        () => {
+
+          if (window.scrollY > 500) {
+
+            pageTop.classList.add(
+              "show"
+            );
+
+          } else {
+
+            pageTop.classList.remove(
+              "show"
+            );
+
+          }
+
+        }
+      );
+
+
+      pageTop.addEventListener(
+        "click",
+        () => {
+
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          });
+
+        }
+      );
+
     </script>
+    <!-- PAGE TOP BUTTON -->
+
+    <button
+      id="pageTop"
+      class="page-top"
+      aria-label="ページトップへ戻る"
+    >
+      ↑ TOP
+    </button>
 </body>
 </html>
