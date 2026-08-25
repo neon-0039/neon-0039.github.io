@@ -523,10 +523,51 @@
       font-weight: 800;
       letter-spacing: .15em;
     }
-
     .copyright {
       color: #777;
       font-size: 12px;
+    }
+
+    /* =====================
+       SECRET BONUS TEXT
+    ===================== */
+
+    .secret-bonus-text {
+      display: none;
+
+      margin-left: 20px;
+
+      padding-left: 20px;
+
+      border-left: 1px solid #555;
+
+      opacity: 0;
+
+      transition: opacity .6s ease;
+    }
+
+    .secret-bonus-text.show {
+      display: inline;
+
+      opacity: 1;
+    }
+
+    .secret-bonus-link {
+      color: #ffd700;
+
+      text-decoration: none;
+
+      font-weight: 600;
+
+      letter-spacing: .08em;
+
+      transition: .2s ease;
+    }
+
+    .secret-bonus-link:hover {
+      color: #fff;
+
+      text-decoration: underline;
     }
 
     /* =====================
@@ -2507,6 +2548,19 @@
 
       <div class="copyright">
         © 2026 neon_0039(akibako_Iovo)
+
+        <span
+          id="secretBonusText"
+          class="secret-bonus-text"
+        >
+          <a
+            href="secret-bonus.zip"
+            download
+            class="secret-bonus-link"
+          >
+            Secret File
+          </a>
+        </span>
       </div>
 
     </div>
@@ -3431,8 +3485,8 @@
       let roundTripCount = 0;
       let secretBonusShown = false;
 
-      const secretBonus =
-        document.getElementById("secretBonus");
+      const secretBonusText =
+        document.getElementById("secretBonusText");
 
       const documentHeight =
         document.documentElement.scrollHeight -
@@ -3506,10 +3560,6 @@
             documentHeight - 100;
 
 
-          const isAtTop =
-            currentScrollY <= 100;
-
-
           /* =====================
              SECRET UNLOCK
           ===================== */
@@ -3522,7 +3572,7 @@
 
             secretBonusShown = true;
 
-            secretBonus.classList.add(
+            secretBonusText.classList.add(
               "show"
             );
 
