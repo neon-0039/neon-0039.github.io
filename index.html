@@ -3185,20 +3185,81 @@
 
 
       /* =====================
-         AUDIO
+         AUDIO CONTEXT
       ===================== */
 
-      const beatSound =
-        new Audio("./beat.wav");
+      const audioContext = 
+        new (window.AudioContext || window.webkitAudioContext)();
 
 
-      const cutSound =
-        new Audio("./cut.wav");
+      function playBeepSound() {
+
+        const now =
+          audioContext.currentTime;
+
+        const oscillator =
+          audioContext.createOscillator();
+
+        const gainNode =
+          audioContext.createGain();
+
+        oscillator.connect(gainNode);
+        gainNode.connect(
+          audioContext.destination
+        );
+
+        oscillator.frequency.value = 800;
+        oscillator.type = 'sine';
+
+        gainNode.gain.setValueAtTime(
+          0.1,
+          now
+        );
+
+        gainNode.gain.exponentialRampToValueAtTime(
+          0.01,
+          now + 0.1
+        );
+
+        oscillator.start(now);
+        oscillator.stop(now + 0.1);
+
+      }
 
 
-      beatSound.preload = "auto";
-      cutSound.preload = "auto";
+      function playCutSound() {
 
+        const now =
+          audioContext.currentTime;
+
+        const oscillator =
+          audioContext.createOscillator();
+
+        const gainNode =
+          audioContext.createGain();
+
+        oscillator.connect(gainNode);
+        gainNode.connect(
+          audioContext.destination
+        );
+
+        oscillator.frequency.value = 1200;
+        oscillator.type = 'square';
+
+        gainNode.gain.setValueAtTime(
+          0.15,
+          now
+        );
+
+        gainNode.gain.exponentialRampToValueAtTime(
+          0.01,
+          now + 0.05
+        );
+
+        oscillator.start(now);
+        oscillator.stop(now + 0.05);
+
+      }
 
       /* =====================
          SETTINGS
@@ -4342,7 +4403,7 @@
 
 
         /*
-         * 次のフレーム
+         * 次のフレーム (60fps)
          */
 
         animationFrame =
@@ -4351,7 +4412,6 @@
           );
 
       }
-
 
       /* =====================
          PLAYBEAT
@@ -4363,12 +4423,6 @@
           !gameRunning
         ) return;
 
-
-        const elapsed =
-          (
-            performance.now() -
-            startTime
-          );
 
         const stage =
           getCurrentStage();
@@ -4390,24 +4444,44 @@
           LEAD_OUT;
 
 
+        const elapsed =
+          (
+            performance.now() -
+            startTime
+          );
+
+
         if (
           elapsed >= totalTime
         ) return;
 
 
-        beatSound.currentTime = 0;
+        /* 次のビートが鳴るべき時間 */
 
-        beatSound.play()
-          .catch(() => {});
+        const nextBeatTime =
+          Math.ceil(
+            elapsed /
+            BEAT_TIME
+          ) *
+          BEAT_TIME;
+
+
+        /* 現在時刻から次のビートまでの時間 */
+
+        const timeUntilBeat =
+          nextBeatTime -
+          elapsed;
+
+
+        playBeepSound();
 
 
         setTimeout(
           playBeat,
-          BEAT_TIME
+          timeUntilBeat
         );
 
       }
-
 
       /* =====================
          CUT BUTTON
@@ -4591,10 +4665,7 @@
            CUT SOUND
         ===================== */
 
-        cutSound.currentTime = 0;
-
-        cutSound.play()
-          .catch(() => {});
+        playCutSound();
 
 
         /* =====================
