@@ -1531,29 +1531,24 @@
       }
 
     }
-    /* =====================
-       SECRET BONUS
+        /* =====================
+       SECRET BONUS HIDDEN SECTION
     ===================== */
 
-    .secret-bonus {
-      position: fixed;
-
-      bottom: -500px;
-      left: 0;
-      width: 100%;
-
+    .secret-bonus-section {
       background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
       color: var(--white);
 
       padding: 60px 20px;
 
-      z-index: 999;
+      max-height: 0;
+      overflow: hidden;
 
-      transition: bottom .8s cubic-bezier(.34, 1.56, .64, 1);
+      transition: max-height .8s cubic-bezier(.34, 1.56, .64, 1);
     }
 
-    .secret-bonus.show {
-      bottom: 0;
+    .secret-bonus-section.show {
+      max-height: 600px;
     }
 
     .secret-bonus-content {
@@ -1572,6 +1567,9 @@
       color: #ffd700;
 
       margin-bottom: 15px;
+
+      opacity: 0;
+      animation: secretContentAppear .6s ease .2s forwards;
     }
 
     .secret-bonus h2 {
@@ -1586,6 +1584,9 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+
+      opacity: 0;
+      animation: secretContentAppear .6s ease .3s forwards;
     }
 
     .secret-bonus p {
@@ -1596,6 +1597,9 @@
       margin-bottom: 30px;
 
       line-height: 1.8;
+
+      opacity: 0;
+      animation: secretContentAppear .6s ease .4s forwards;
     }
 
     .secret-bonus-download {
@@ -1619,6 +1623,9 @@
       transition: .3s ease;
 
       cursor: pointer;
+
+      opacity: 0;
+      animation: secretContentAppear .6s ease .5s forwards;
     }
 
     .secret-bonus-download:hover {
@@ -1629,10 +1636,24 @@
       transform: translateY(-3px);
     }
 
+    @keyframes secretContentAppear {
+
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
     @media (max-width: 800px) {
 
-      .secret-bonus {
-        padding: 40px 20px;
+      .secret-bonus-section.show {
+        max-height: 700px;
       }
 
       .secret-bonus h2 {
@@ -2495,15 +2516,15 @@
     </div>
 
   </footer>
-  </footer>
+  
 
   <!-- =====================
-       SECRET BONUS (Fixed Bottom)
+       SECRET BONUS HIDDEN CONTENT
   ====================== -->
 
   <div
-    id="secretBonus"
-    class="secret-bonus"
+    id="secretBonusSection"
+    class="secret-bonus-section"
   >
 
     <div class="container">
@@ -2519,8 +2540,8 @@
         </h2>
 
         <p>
-          こんな何もないページで25回も往復するんですか...(笑)
-          よっぽど暇な方なんですね？
+          こんな何もないページで25回も往復するんですか...(笑)<br>
+          よっぽど暇な方なんですね？<br>
           滞在してくれたささやかなお礼(？)をおいておきます　by neon_0039
         </p>
 
@@ -3415,8 +3436,8 @@
       let roundTripCount = 0;
       let secretBonusShown = false;
 
-      const secretBonus =
-        document.getElementById("secretBonus");
+      const secretBonusSection =
+        document.getElementById("secretBonusSection");
 
       const documentHeight =
         document.documentElement.scrollHeight -
@@ -3502,7 +3523,7 @@
 
             secretBonusShown = true;
 
-            secretBonus.classList.add(
+            secretBonusSection.classList.add(
               "show"
             );
 
