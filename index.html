@@ -1444,6 +1444,83 @@
     #splitterCut:active {
       transform: scale(.96);
     }
+
+    /* ---------------------
+       SPECIAL UNLOCK (S-HARD)
+    --------------------- */
+
+    .splitter-unlock {
+      display: none;
+
+      margin-top: 25px;
+      padding: 25px;
+
+      border: 1px solid var(--white);
+
+      background: var(--black);
+      color: var(--white);
+
+      animation: splitterUnlockAppear .6s ease;
+    }
+
+    .splitter-unlock.show {
+      display: block;
+    }
+
+    .splitter-unlock-label {
+      margin-bottom: 8px;
+
+      font-size: 11px;
+      font-weight: 800;
+
+      letter-spacing: .2em;
+    }
+
+    .splitter-unlock p {
+      margin: 0 0 20px;
+
+      color: #aaa;
+      font-size: 12px;
+    }
+
+    .splitter-special-download {
+      display: inline-block;
+
+      padding: 13px 22px;
+
+      border: 1px solid var(--white);
+
+      background: var(--white);
+      color: var(--black);
+
+      text-decoration: none;
+
+      font-size: 11px;
+      font-weight: 800;
+
+      letter-spacing: .12em;
+
+      transition: .2s;
+    }
+
+    .splitter-special-download:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    @keyframes splitterUnlockAppear {
+
+      0% {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
   </style>
 </head>
 
@@ -2084,6 +2161,50 @@
 
               </div>
 
+              <div class="splitter-result">
+
+                <div
+                  id="splitterResult"
+                  class="splitter-result-main"
+                >
+                  READY
+                </div>
+
+                <div
+                  id="splitterCombo"
+                  class="splitter-combo"
+                >
+                  COMBO ×0
+                </div>
+
+              </div>
+
+
+              <div
+                id="splitterUnlock"
+                class="splitter-unlock"
+              >
+
+                <div class="splitter-unlock-label">
+                  S-HARD GREAT UNLOCKED
+                </div>
+
+                <p>
+                  S-HARD で GREAT 以上の成績を獲得しました。特別ファイルをダウンロード可能です。
+                </p>
+
+                <a
+                  href="special2.zip"
+                  download
+                  class="splitter-special-download"
+                >
+                  SPECIAL DOWNLOAD
+                </a>
+
+              </div>
+
+
+              <div class="splitter-buttons">
 
               <div class="splitter-buttons">
 
@@ -4832,11 +4953,18 @@
           false;
 
 
+        let resultText =
+          "KEEP TRYING";
+
+
         if (
           accuracy >= 90
         ) {
 
           splitterResult.textContent =
+            "EXCELLENT";
+
+          resultText =
             "EXCELLENT";
 
         } else if (
@@ -4846,11 +4974,17 @@
           splitterResult.textContent =
             "GREAT";
 
+          resultText =
+            "GREAT";
+
         } else if (
           accuracy >= 50
         ) {
 
           splitterResult.textContent =
+            "GOOD";
+
+          resultText =
             "GOOD";
 
         } else {
@@ -4860,13 +4994,44 @@
 
         }
 
+
+        /* =====================
+           S-HARD UNLOCK
+        ===================== */
+
+        const splitterUnlock =
+          document.getElementById(
+            "splitterUnlock"
+          );
+
+
+        if (
+          selectedLevel ===
+          "s-hard" &&
+          (
+            resultText === "GREAT" ||
+            resultText === "EXCELLENT"
+          )
+        ) {
+
+          splitterUnlock.classList.add(
+            "show"
+          );
+
+        } else {
+
+          splitterUnlock.classList.remove(
+            "show"
+          );
+
+        }
+
       }
 
 
       /* =====================
          RESET
       ===================== */
-
       splitterReset.addEventListener(
         "click",
         () => {
@@ -4928,11 +5093,21 @@
             "4/4 — タン・タン・タン・タン";
 
 
+          const splitterUnlock =
+            document.getElementById(
+              "splitterUnlock"
+            );
+
+
+          splitterUnlock.classList.remove(
+            "show"
+          );
+
+
           drawWave();
 
         }
       );
-
 
       /* =====================
          DIFFICULTY
