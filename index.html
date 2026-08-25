@@ -2480,34 +2480,40 @@
       ===================== */
 
       draw();
+    </script>
+    <!-- PAGE TOP BUTTON -->
 
-      /* =====================
-         PAGE TOP
-      ===================== */
+    <button
+      id="pageTop"
+      class="page-top"
+      aria-label="ページトップへ戻る"
+    >
+      ↑ TOP
+    </button>
+    <script>
 
       const pageTop =
         document.getElementById("pageTop");
 
 
-      window.addEventListener(
-        "scroll",
-        () => {
+      function checkPageTop() {
 
-          if (window.scrollY > 500) {
+        if (window.scrollY > 300) {
 
-            pageTop.classList.add(
-              "show"
-            );
+          pageTop.classList.add("show");
 
-          } else {
+        } else {
 
-            pageTop.classList.remove(
-              "show"
-            );
-
-          }
+          pageTop.classList.remove("show");
 
         }
+
+      }
+
+
+      window.addEventListener(
+        "scroll",
+        checkPageTop
       );
 
 
@@ -2523,15 +2529,12 @@
         }
       );
 
-    </script>
-    <!-- PAGE TOP BUTTON -->
 
-    <button
-      id="pageTop"
-      class="page-top"
-      aria-label="ページトップへ戻る"
-    >
-      ↑ TOP
-    </button>
+      checkPageTop();
+
+    </script>
+
+  </body>
+</html>
 </body>
 </html>
