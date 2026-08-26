@@ -1531,7 +1531,7 @@
       }
 
     }
-        /* =====================
+    /* =====================
        SECRET BONUS HIDDEN SECTION
     ===================== */
 
@@ -1541,21 +1541,38 @@
 
       padding: 60px 20px;
 
-      max-height: 0;
+      /* 完全に非表示にする（表示は .show で切り替える） */
+      display: none;
       overflow: hidden;
-
-      transition: max-height .8s cubic-bezier(.34, 1.56, .64, 1);
     }
 
     .secret-bonus-section.show {
-      max-height: 600px;
+      /* 表示時にブロック表示にする（アニメーションは内部の要素で行う） */
+      display: block;
+      animation: secretContentAppear .6s ease;
     }
 
-    .secret-bonus-content {
-      text-align: center;
+    @media (max-width: 800px) {
 
-      max-width: 600px;
-      margin: 0 auto;
+      .secret-bonus-section.show {
+        /* モバイル時の余白調整（表示時のみ適用） */
+        padding: 60px 18px;
+      }
+
+      .secret-bonus h2 {
+        font-size: 28px;
+      }
+
+      .secret-bonus p {
+        font-size: 14px;
+      }
+
+      .secret-bonus-download {
+        padding: 14px 30px;
+
+        font-size: 12px;
+      }
+
     }
 
     .secret-bonus-label {
@@ -3431,18 +3448,28 @@
 
     <script>
 
-      let scrollDirection = "down";
-      let lastScrollY = 0;
+      /* =====================
+         SECRET BONUS (top -> bottom を 1 往復としてカウント)
+      ===================== */
+
+      // top に近いとみなす閾値（ピクセル）
+      const TOP_THRESHOLD = 40;
+      // bottom に近いとみなす閾値（ピクセル）
+      const BOTTOM_THRESHOLD = 40;
+      // 必要往復数（解除に必要な top->bottom の回数）
+      const REQUIRED_TRIPS = 25;
+
+      let lastWasTop = window.scrollY <= TOP_THRESHOLD;
       let roundTripCount = 0;
       let secretBonusShown = false;
 
       const secretBonusSection =
         document.getElementById("secretBonusSection");
 
-      const documentHeight =
-        document.documentElement.scrollHeight -
-        window.innerHeight;
-
+      function getDocumentScrollableHeight() {
+        // ドキュメント全体のスクロール可能高さ（表示領域を引いたもの）
+        return document.documentElement.scrollHeight - window.innerHeight;
+      }
 
       window.addEventListener(
         "scroll",
@@ -3451,73 +3478,40 @@
           const currentScrollY =
             window.scrollY;
 
+          const documentHeight =
+            getDocumentScrollableHeight();
 
-          /* =====================
-             DIRECTION DETECTION
-          ===================== */
+          const isAtTop =
+            currentScrollY <= TOP_THRESHOLD;
 
+          const isAtBottom =
+            currentScrollY >= documentHeight - BOTTOM_THRESHOLD;
+
+          // top に戻ったらフラグを立てる
+          if (isAtTop) {
+            lastWasTop = true;
+          }
+
+          // top から bottom に到達した瞬間のみカウント（連続で bottom にいるだけでは増えない）
           if (
-            currentScrollY > lastScrollY
+            isAtBottom &&
+            lastWasTop &&
+            !secretBonusShown
           ) {
 
-            /* Scrolling DOWN */
+            roundTripCount++;
 
-            if (
-              scrollDirection === "up"
-            ) {
+            lastWasTop = false;
 
-              scrollDirection = "down";
-
-              roundTripCount++;
-
-              console.log(
-                `往復回数: ${roundTripCount}`
-              );
-
-            }
-
-          } else if (
-            currentScrollY < lastScrollY
-          ) {
-
-            /* Scrolling UP */
-
-            if (
-              scrollDirection === "down"
-            ) {
-
-              scrollDirection = "up";
-
-              roundTripCount++;
-
-              console.log(
-                `往復回数: ${roundTripCount}`
-              );
-
-            }
+            console.log(
+              `往復回数: ${roundTripCount}`
+            );
 
           }
 
-
-          lastScrollY = currentScrollY;
-
-
-          /* =====================
-             BOTTOM DETECTION
-          ===================== */
-
-          const isAtBottom =
-            currentScrollY >=
-            documentHeight - 100;
-
-
-          /* =====================
-             SECRET UNLOCK
-          ===================== */
-
+          // 必要回数に達したら一度だけ表示
           if (
-            roundTripCount >= 25 &&
-            isAtBottom &&
+            roundTripCount >= REQUIRED_TRIPS &&
             !secretBonusShown
           ) {
 
@@ -3531,6 +3525,11 @@
 
         }
       );
+
+      // リサイズ時は documentHeight が変わる可能性があるので利便上 listener を用意（必須ではない）
+      window.addEventListener("resize", () => {
+        // 次のスクロールで getDocumentScrollableHeight() が最新値を参照します
+      });
 
     </script>
     <script>
