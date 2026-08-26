@@ -6334,7 +6334,7 @@
 
 
       /* =====================
-         ROTATE
+         ROTATE (CLOCKWISE)
       ===================== */
 
       function tetrisRotate() {
@@ -6344,6 +6344,36 @@
           !tetrisGameRunning
         ) return;
 
+
+        tetrisRotateWithDirection(1);
+
+      }
+
+
+      /* =====================
+         ROTATE (COUNTER-CLOCKWISE)
+      ===================== */
+
+      function tetrisRotateCounterClockwise() {
+
+        if (
+          !tetrisPiece ||
+          !tetrisGameRunning
+        ) return;
+
+
+        tetrisRotateWithDirection(-1);
+
+      }
+
+
+      /* =====================
+         ROTATE WITH DIRECTION
+      ===================== */
+
+      function tetrisRotateWithDirection(
+        direction
+      ) {
 
         const shapeData =
           TETRIS_SHAPES[
@@ -6358,7 +6388,8 @@
 
         const nextRotationIndex =
           (
-            tetrisPiece.rotationIndex + 1
+            tetrisPiece.rotationIndex + direction +
+            shapeData.blocks.length
           ) %
           shapeData.blocks.length;
 
@@ -6389,14 +6420,18 @@
         }
 
 
-        /* Wall kick attempts */
+        /* Wall kick attempts with wider range */
 
         const kickOffsets = [
           0,
           -1,
           1,
           -2,
-          2
+          2,
+          -3,
+          3,
+          -4,
+          4
         ];
 
         for (
@@ -6425,6 +6460,49 @@
             tetrisPiece.x += offset;
 
             return;
+
+          }
+
+        }
+
+        /* Try moving up if horizontal kick fails */
+
+        for (
+          let upShift = 1;
+          upShift <= 3;
+          upShift++
+        ) {
+
+          for (
+            let i = 0;
+            i < kickOffsets.length;
+            i++
+          ) {
+
+            const offset =
+              kickOffsets[i];
+
+            if (
+              tetrisCanPlace(
+                nextBlocks,
+                tetrisPiece.x + offset,
+                tetrisPiece.y - upShift
+              )
+            ) {
+
+              tetrisPiece.blocks =
+                nextBlocks;
+
+              tetrisPiece.rotationIndex =
+                nextRotationIndex;
+
+              tetrisPiece.x += offset;
+
+              tetrisPiece.y -= upShift;
+
+              return;
+
+            }
 
           }
 
@@ -6559,7 +6637,9 @@
 
         if (linesToClear.length > 0) {
 
-          linesToClear.sort((a, b) => b - a);
+          linesToClear.sort(
+            (a, b) => b - a
+          );
 
           for (
             let i = 0;
@@ -6841,7 +6921,7 @@
             tetrisGetDropPosition();
 
           tetrisCtx.fillStyle =
-            "rgba(255,255,255,0.1)";
+            "rgba(255,255,255,0.25)";
 
           for (
             let row = 0;
@@ -7177,6 +7257,12 @@
             case "z":
             case "Z":
               tetrisRotate();
+              event.preventDefault();
+              break;
+
+            case "x":
+            case "X":
+              tetrisRotateCounterClockwise();
               event.preventDefault();
               break;
 
