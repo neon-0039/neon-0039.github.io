@@ -397,6 +397,161 @@
       font-size: 12px;
       color: #888;
     }
+    /* =====================
+       TOP NEWS
+    ===================== */
+
+    .top-news {
+      display: flex;
+      align-items: center;
+
+      width: 100%;
+
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+
+      background: var(--white);
+    }
+
+
+    .top-news-label {
+      display: flex;
+      align-items: center;
+
+      flex: 0 0 auto;
+
+      height: 46px;
+
+      padding: 0 24px;
+
+      border-right: 1px solid #ddd;
+
+      color: var(--black);
+
+      font-size: 10px;
+      font-weight: 800;
+
+      letter-spacing: .16em;
+
+      white-space: nowrap;
+    }
+
+
+    .top-news-window {
+      position: relative;
+
+      flex: 1;
+
+      min-width: 0;
+
+      height: 46px;
+
+      overflow: hidden;
+    }
+
+
+    .top-news-track {
+      position: absolute;
+
+      left: 0;
+      top: 0;
+
+      display: flex;
+      align-items: center;
+
+      height: 46px;
+
+      white-space: nowrap;
+
+      will-change: transform;
+    }
+
+
+    .top-news-content {
+      display: inline-flex;
+      align-items: center;
+
+      flex: 0 0 auto;
+
+      height: 46px;
+    }
+
+
+    .top-news-item {
+      display: inline-flex;
+      align-items: center;
+
+      gap: 14px;
+
+      padding: 0 28px;
+
+      color: var(--black);
+
+      font-size: 14px;
+      font-weight: 600;
+
+      text-decoration: none;
+
+      white-space: nowrap;
+
+      transition:
+        opacity .2s ease;
+    }
+
+
+    .top-news-item:hover {
+      opacity: .5;
+    }
+
+
+    .top-news-item time {
+      color: #999;
+
+      font-size: 12px;
+      font-weight: 500;
+
+      letter-spacing: .12em;
+    }
+
+
+    .top-news-separator {
+      color: #ccc;
+
+      font-size: 11px;
+    }
+
+
+    @media (max-width: 800px) {
+
+      .top-news-label {
+        height: 42px;
+
+        padding: 0 16px;
+
+        font-size: 9px;
+      }
+
+
+      .top-news-window {
+        height: 42px;
+      }
+
+
+      .top-news-track,
+      .top-news-content {
+        height: 42px;
+      }
+
+
+      .top-news-item {
+        gap: 10px;
+
+        padding: 0 18px;
+
+        font-size: 10px;
+      }
+
+    }
 
     /* =====================
        NEWS
@@ -1934,7 +2089,7 @@
           <li><a href="#about">ABOUT</a></li>
           <li><a href="#voicebank">VOICEBANK</a></li>
           <li><a href="#download">DOWNLOAD</a></li>
-          <li><a href="#news">NEWS</a></li>
+          <li><a href="#devlog">DEV LOG</a></li>
           <li><a href="#guide">GUIDE</a></li>
           <li><a href="#talk">RANDOM TALK</a></li>
         </ul>
@@ -1995,6 +2150,94 @@
       </div>
 
     </section>
+
+    <!-- =====================
+         TOP NEWS
+    ====================== -->
+
+    <section
+      class="top-news"
+      aria-label="TOP NEWS"
+    >
+
+      <div class="top-news-label">
+        TOP NEWS
+      </div>
+
+      <div class="top-news-window">
+
+        <div
+          id="topNewsTrack"
+          class="top-news-track"
+        >
+
+          <div
+            class="top-news-content"
+          >
+
+            <a
+              href="#devlog"
+              class="top-news-item"
+            >
+              <time datetime="2026-08-28">
+                2026.08.28
+              </time>
+
+              <span>
+              「夕立ヘルツverα1.1-拡張ファイル・母音連続音」を公開
+              </span>
+            </a>
+
+
+            <span
+              class="top-news-separator"
+            >
+              /
+            </span>
+
+
+            <a
+              href="#devlog"
+              class="top-news-item"
+            >
+              <time datetime="2026-08-25">
+                2026.08.25
+              </time>
+
+              <span>
+                公式サイト公開
+              </span>
+            </a>
+
+
+            <span
+              class="top-news-separator"
+            >
+              /
+            </span>
+
+
+            <a
+              href="#devlog"
+              class="top-news-item"
+            >
+              <time datetime="2026-08-25">
+                2026.08.24
+              </time>
+
+              <span>
+                「夕立ヘルツverα1.1用　非常に雑な原音設定ファイル」を公開
+              </span>
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
 
 
     <!-- =====================
@@ -2173,7 +2416,7 @@
          NEWS
     ====================== -->
 
-    <section id="news">
+    <section id="devlog">
 
       <div class="container">
 
@@ -2181,16 +2424,16 @@
 
           <div>
             <div class="section-label">
-              04 / NEWS
+              04 / DEV LOG
             </div>
 
             <h2 class="section-title">
-              NEWS
+              DEVLOG
             </h2>
           </div>
 
           <p class="section-description">
-            更新情報・お知らせ
+            開発記録
           </p>
 
         </div>
@@ -2844,6 +3087,24 @@
           <article class="talk-item">
 
             <time class="talk-date">
+              2026.08.28
+            </time>
+
+            <div class="talk-content">
+              <h3>
+                CV(キャラクターボイス)とSV(サンプリングボイス)の2パターンを作ろうかな
+              </h3>
+
+              <p>
+                CVはこのままsin波合成の声で進めてくのと同時に、SVは私自身の声を録音して加工して...ってやってみたくもある。
+              </p>
+            </div>
+
+          </article>
+          
+          <article class="talk-item">
+
+            <time class="talk-date">
               2026.08.25
             </time>
 
@@ -2853,7 +3114,7 @@
               </h3>
 
               <p>
-                HTMLとCSSの知識が少なすぎて、完成させられる気がしなかったのですべてChatGPTに任せてます。AIは偉大。
+                HTMLとCSSの知識が少なすぎて、完成させられる気がしなかったのですべてChatGPT/Github Copilotに任せてます。AIは偉大。
               </p>
             </div>
 
@@ -8633,6 +8894,188 @@
       tetrisDraw();
 
     </script>
+    <script>
 
+      /* =====================
+         TOP NEWS MARQUEE
+      ===================== */
+
+      const topNewsWindow =
+        document.querySelector(
+          ".top-news-window"
+        );
+
+
+      const topNewsTrack =
+        document.getElementById(
+          "topNewsTrack"
+        );
+
+
+      const topNewsContent =
+        document.querySelector(
+          ".top-news-content"
+        );
+
+
+      let topNewsOffset = 0;
+
+      let topNewsWidth = 0;
+
+      let topNewsSpeed = 1.3;
+
+      let topNewsAnimation;
+
+
+      function setupTopNews() {
+
+        if (
+          !topNewsWindow ||
+          !topNewsTrack ||
+          !topNewsContent
+        ) {
+          return;
+        }
+
+
+        /*
+         * 元のニュース1セットの幅
+         */
+
+        topNewsWidth =
+          topNewsContent
+            .getBoundingClientRect()
+            .width;
+
+
+        /*
+         * 画面外の右側から開始
+         */
+
+        topNewsOffset =
+          topNewsWindow
+            .getBoundingClientRect()
+            .width;
+
+
+        topNewsTrack.style.transform =
+          `translateX(${topNewsOffset}px)`;
+
+      }
+
+
+      function animateTopNews() {
+
+        if (
+          !topNewsTrack ||
+          !topNewsWidth
+        ) {
+          return;
+        }
+
+
+        topNewsOffset -=
+          topNewsSpeed;
+
+
+        /*
+         * 1セット分完全に左へ
+         * 流れたら右へ戻す
+         */
+
+        if (
+          topNewsOffset <=
+          -topNewsWidth
+        ) {
+
+          topNewsOffset =
+            topNewsWindow
+              .getBoundingClientRect()
+              .width;
+
+        }
+
+
+        topNewsTrack.style.transform =
+          `translateX(${topNewsOffset}px)`;
+
+
+        topNewsAnimation =
+          requestAnimationFrame(
+            animateTopNews
+          );
+
+      }
+
+
+      function startTopNews() {
+
+        cancelAnimationFrame(
+          topNewsAnimation
+        );
+
+
+        setupTopNews();
+
+
+        topNewsAnimation =
+          requestAnimationFrame(
+            animateTopNews
+          );
+
+      }
+
+
+      window.addEventListener(
+        "load",
+        startTopNews
+      );
+
+
+      window.addEventListener(
+        "resize",
+        () => {
+
+          setupTopNews();
+
+        }
+      );
+
+
+      /*
+       * マウスを乗せたら停止
+       */
+
+      if (
+        topNewsWindow
+      ) {
+
+        topNewsWindow.addEventListener(
+          "mouseenter",
+          () => {
+
+            cancelAnimationFrame(
+              topNewsAnimation
+            );
+
+          }
+        );
+
+
+        topNewsWindow.addEventListener(
+          "mouseleave",
+          () => {
+
+            topNewsAnimation =
+              requestAnimationFrame(
+                animateTopNews
+              );
+
+          }
+        );
+
+      }
+
+    </script>
   </body>
 </html>
